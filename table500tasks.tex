@@ -1,0 +1,38 @@
+\begin{table}%[t]
+	\small
+	\fontsize{6}{6}\selectfont
+	\centering
+	\caption{Total reward, makespan, quantity and quality of completed tasks and number of exchanged messages of 30 runs of each algorithm in scenarios with 100 \uavs\ and 500 tasks}
+	\label{table:500tasks}
+	
+	\begin{tabular}{rrrrr} \hline
+		& Swarm-GAP
+		& AL
+		& SAL
+		& LAL \\ \hline 
+		
+		& Mean (St.Dev.) & Mean (St.Dev.)  & Mean (St.Dev.)  & Mean (St.Dev.)  \\ [1ex]
+		
+		\multicolumn{5}{l}{\textbf{100 UAVs and 500 tasks in area of 750x750 pixels with deadline of 300 ticks}} \\
+		Total reward           &  162.0141  ($\pm$6.5974) &  162.9333  ($\pm$7.0324)   &  339.2015  ($\pm$7.5146)  &  240.956   ($\pm$3.6869)   \\
+		Elapsed time (norm)    &  0.9979    ($\pm$0.0020) &  0.9978    ($\pm$0.0020)   &  0.9908    ($\pm$0.0029)  &  0.9992    ($\pm$0.0023)   \\ 
+		Comp. tasks (norm)     &  0.4063    ($\pm$0.0141) &  0.4090    ($\pm$0.0161)   &  0.7269    ($\pm$0.0159)  &  0.5022    ($\pm$0.0075)   \\ 
+		Quality (norm)         &  0.7789    ($\pm$0.0234) &  0.7736    ($\pm$0.0190)   &  0.9638    ($\pm$0.0085)  &  0.9707    ($\pm$0.0078)   \\ 
+		%Idle UAVs              &  0.0000    ($\pm$0.0000) &  0.0000    ($\pm$0.0000)   &  0.4333    ($\pm$0.5683)  &  0.0000    ($\pm$0.0000)   \\ 
+		Sending token          &  100       ($\pm$0.0000) &  103.4667  ($\pm$1.9070)   &  104.5333  ($\pm$1.8889)  &  298.1333  ($\pm$2.5695)   \\ 
+		%Cost = (t + me) / ct   & 1.9660                  &  1.9697                   &  1.1055                  &  2.3811                   \\ 
+		%Total Runtime (sec)    & 335.1766   ($\pm$92.466) &  550.796   ($\pm$261.7752) &  1164.9918 ($\pm$343.6324) &  2163.343 ($\pm$287.6923)  \\ 
+		[1ex]	\hline
+		
+		\multicolumn{5}{l}{\textbf{100 UAVs and 500 tasks in area of 750x750 pixels with deadline of 1000 ticks}} \\
+		Total reward           &  227.1356  ($\pm$8.4193)    &  230.5901  ($\pm$9.4936) &  435.3937 ($\pm$5.3410)    &  461.5992  ($\pm$2.0479)  \\
+		Comp. tasks (norm)     &  0.7295    ($\pm$0.0213)    &  0.7420    ($\pm$0.0230) &  1.0000   ($\pm$0.0000)    &  1.0000    ($\pm$0.0000) \\ 
+		Elapsed time (norm)    &  0.9983    ($\pm$8.0E-4)    &  0.9982    ($\pm$8.0E-4) &  0.9925   ($\pm$0.0028)    &  0.9856    ($\pm$0.0123)  \\ 
+		Quality (norm)         &  0.7960    ($\pm$0.0173)    &  0.7902    ($\pm$0.0154) &  0.9650   ($\pm$0.0138)    &  0.9778    ($\pm$0.0058) \\ 
+		%Idle UAVs              &  0.0000    ($\pm$0.0000)    &  0.0000    ($\pm$0.0000) &  38.7333  ($\pm$2.6773)    &  0.0000    ($\pm$0.0000)   \\ 
+		Sending token          &  100       ($\pm$0.0000)    &  110.1667  ($\pm$2.6141) &  65.7667  ($\pm$4.2966)    &  526.1667  ($\pm$12.3821)  \\ 
+		%Cost = (t + me) / ct   &  3.0111                    & 2.9875                  &  2.1165                   &  3.0235                   \\ 
+		%Total Runtime (sec)    &  244.3903  ($\pm$30.1872)   & 356.2328   ($\pm$25.864) &  404.3574 ($\pm$343.8118)  &  2879.1853 ($\pm$567.0917)  \\ 
+		[1ex]	\hline
+	\end{tabular}
+\end{table} 

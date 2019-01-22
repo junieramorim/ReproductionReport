@@ -1,0 +1,167 @@
+In order to evaluate the proposed algorithms, the following metrics were considered:
+\begin{inlinelist}
+	\item Total reward;
+	\item Makespan (total elapsed time from the beginning to the end of the execution);
+	\item Quantity of the tasks that were completed; and
+	\item Quality of the completed tasks. The main objective is to maximize the total reward (a). Since this metric is influenced by the quantity and quality of the completed tasks (see Section \ref{sec:problem}), the metrics (b), (c) and (d) allow to understand the result of the (a). Furthermore, the
+	\item Number of exchanged messages (related to the token-passing mechanism) and the
+	\item Algorithm's runtime were also measured and analyzed.
+\end{inlinelist}
+ 
+The metrics are applied to evaluate the proposed methods, i.e. AL, SAL and LAL, and compared them to the results obtained using the Swarm-GAP. Part of the achieved results are shown in charts, but the complete data (mean and standard deviation) for all assessed metrics for each algorithm and scenario, from \ref{case:4tasks} to \ref{case:96tasks}, are presented in Tables \ref{table:allresults3uavs} and \ref{table:allresults6or9uavs}. A specific set of scenarios is used to highlight the results for each metric. After their presentation, these results are discussed. At the end of this section, a scalability analysis of the algorithms is provided.
+
+\input{tables}
+
+Scenarios \ref{case:4tasks}, \ref{case:8tasks}, \ref{case:16tasks} and \ref{case:32tasks}, which are composed of 4, 8, 16 and 32 tasks, respectively, are used to demonstrate the results of the total reward, makespan, quantity and quality of the completed tasks and number of exchanged messages. These four scenarios were selected due to the fact that they have the same number of \uavs\ and the amount of tasks is varied, but with the same mission's deadline. This choice allows to evaluate situations in which the UAVs have enough time, or more than enough, to perform the tasks (this is the case for scenarios \ref{case:4tasks} and \ref{case:8tasks}), and situations in which the UAVs have a short time to perform a large number of tasks (scenarios \ref{case:16tasks} and \ref{case:32tasks}).  In the former, the UAVs can perform all tasks, but they must do it in the shortest time. On the other hand, in the second situation the UAVs do not have enough time to perform all tasks. Then, they must perform as many tasks as possible.
+
+\subsection{Total reward}
+
+The total reward of each method for the different scenarios is shown in Figure \ref{grafico:total_capability}. In scenarios with 4 and 8 tasks, both AL and SAL algorithms outperformed the Swarm-GAP by about 24\%.
+
+As the amount of tasks increases, SAL allows a greater total reward than AL. SAL outperformed Swarm-GAP by 31.89\% and 51.03\% in the scenarios with 16 and 32 tasks, respectively, while AL overcomes the Swarm-gap by 14.48\% in scenario with 16 tasks. AL and Swarm-GAP presented the same results in the scenario with 32 tasks.
+
+The highest total reward was obtained by the LAL algorithm. This variant outperformed Swarm-GAP by 31.85\%, 64.63\%, 59.2\% and 118.7\% in the scenarios with 4, 8, 16 and 32 tasks, respectively. This pattern of enhancement in the total reward can also be observed in the scenario with 64 and 96 tasks (See table \ref{table:allresults6or9uavs}). The LAL algorithm presented results 3.2 and 2.87 times better than Swarm-GAP.
+
+%\input{graficos/total_capability}
+\begin{figure}[h]
+	\begin{center}
+		\includegraphics[scale=1.00]{total_capability.pdf}
+		\caption{Total reward of each method for different scenarios with stimulus 0.6}
+		\label{grafico:total_capability}
+	\end{center}
+\end{figure}
+
+\subsection{Makespan and quantity of completed tasks}
+
+The quantity of completed tasks for each algorithm in each scenario is presented in Figure \ref{grafico:tarefasconcluidas}. 
+The results presented in this figure are normalized by the number of tasks of each scenario. Figure \ref{grafico:ticks} shows the elapsed time (in ticks), normalized by the deadline associated to the mission. 
+As it is possible to observe, using time efficiently, the \uavs\ can perform more tasks achieving greater total rewards.
+
+%\input{graficos/graficos_completed_tasks}
+\begin{figure}[h]
+	\begin{center}
+		\includegraphics[scale=1.00]{completed_tasks.pdf}
+		\caption{Completed tasks of each method for different scenarios with stimulus 0.6}
+		\label{grafico:tarefasconcluidas}
+	\end{center}
+\end{figure}
+
+
+%\input{graficos/graficos_ticks}
+\begin{figure}[h]
+	\begin{center}
+		\includegraphics[scale=1.00]{makespan.pdf}
+		\caption{Makespan of each method for different scenarios with stimulus 0.6}
+		\label{grafico:ticks}
+	\end{center}
+\end{figure}
+
+In scenarios with 4 and 8 tasks, in which there is enough time (extended or relaxed deadline) for the UAVs carrying out all the tasks (the whole mission), the Swarm-GAP algorithm results in \uavs\ not using all the available resources. In these cases they have used only 35.59\% and 68.81\% of the time. Moreover, more than 22\% of the tasks were not performed in these two scenarios. The slack time (65\% and 32\%, respectively, in scenarios with 4 and 8 tasks) could have been used to perform other tasks. On the other hand, using Allocation Loop (AL) method allowed 100\% and 99\% of the tasks to be performed. This was possible because while a \uav\ still has resources, it may select more tasks to perform in this method.
+
+When the algorithms with Sorting and Allocation Loop (SAL), and Limit and Allocation Loop (LAL) were used, the \uavs\ have also performed all tasks in scenarios with 4 and 8 tasks. However, they took less time than the AL. The LAL, for instance, improves the elapsed time by 27\% and 12\% compared to AL in the scenarios with 4 and 8 tasks, respectively.
+
+In scenarios with 16 and 32 tasks, i.e., those in which there are more tasks to be performed, the use of the SAL algorithm causes more tasks to be performed, in comparison to Swarm-GAP and AL, without increasing the elapsed time. For instance, in the scenario with 16 tasks, the use of SAL increased the amount of completed tasks by 28.8\% compared to Swarm-GAP. The LAL method improves this performance even further. 
+In the scenario with 16 tasks, it happened simulation runs in which the UAVs have performed all tasks when using the LAL algorithm. Furthermore, in the scenario with 32 tasks, LAL increased the completed tasks by 59\%, whereas still reducing the elapsed time by 2.09\% compared to Swarm-GAP.
+
+\subsection{Quality of completed tasks}
+
+The average quality of the completed tasks in each scenario is shown in Figure \ref{grafico:qualidade}. The quality metric was normalized in relation to the number of completed tasks. The higher the quality of the tasks performed by the agents, the greater the total reward. For this measure, the LAL algorithm also shown the best results.
+
+%\input{graficos/graficos_quality}
+\begin{figure}[h!]
+	\begin{center}
+		\includegraphics[scale=1.00]{quality.pdf}
+		\caption{Quality of each method for different scenarios with stimulus 0.6}
+		\label{grafico:qualidade}
+	\end{center}
+\end{figure}
+
+In the scenarios with 4 and 8 tasks, the methods Swarm-GAP, AL, and SAL presented similar results in the quality of the completed tasks. However, Swarm-GAP outperformed SAL, but only in about 3\%. LAL increased by 12.74\% and 8.3\% the quality of the completed tasks in the scenario with 4 and 8 tasks, respectively, compared to the Swarm-GAP algorithm. 
+
+In the scenario with 16 tasks, SAL still has a slightly lower result than Swarm-GAP (-3.2\%). However, when there are more tasks, such as in the scenario with 32 tasks, SAL improved the quality by 17.86\% compared to the Swarm-GAP. In the scenarios with 16 and 32 tasks, LAL presents an improvement of 13.92\% and 25.6\% compared to the Swarm-GAP, respectively. This pattern of quality improvement can also be observed in the other experiments 
+with 64 and 96 tasks (see Table \ref{table:allresults6or9uavs}).
+
+\subsection{Number of exchanged messages}
+
+Figure \ref{grafico:trocamensagens} shows the number of exchanged messages for each algorithm in each scenario.
+It is possible to notice that this number is nearly constant in the Swarm-GAP, AL and SAL, while in the LAL method the number of exchanged messages increases linearly with the amount of completed tasks. 
+The behavior of  the three first algorithms is due to the fact that in these algorithms the number of the tokens that are sent relates more to the amount of agents than to the number of performed tasks.
+
+%\input{graficos/graficos_msg}
+\begin{figure}[h!]
+	\begin{center}
+		\includegraphics[scale=1.00]{exchanged_messages.pdf}
+		\caption{Total number of exchanged messages of each method for different scenarios  with stimulus 0.6}
+		\label{grafico:trocamensagens}
+	\end{center}
+\end{figure}
+
+Using Swarm-GAP, each UAV receives the token at most once. When the UAV does not receive it, this means that all tasks were already selected before the token arrives to this given UAV. Anyway, when there is a given number of agents, for example three, the token is sent three times and then it is discarded. For AL and SAL, each \uav\ can receive the token more than once. On average, each \uav\ receives approximately one to two times the token.
+Due to LAL's limitation of choosing at most one task at a time that the \uav\ receives the token, 
+the number of exchanged messages is about the same number of performed tasks.
+
+Despite the higher number of exchanged messages in the LAL algorithm, the quantity of completed tasks improved and the elapsed time decreased. Hence, the LAL algorithm enables \uavs\ to spend less time in the execution of each task, i.e., the cost to carry out the tasks decreases.
+
+In order to investigate if this increase in the number of exchanged messages is rewarded by the quantity of completed tasks, Figure \ref{grafico:custoportarefa} presents the average cost to perform each task, considering also the number of exchanged messages. 
+Then, the cost was computed by $avgcost = (t + em) / ct$, where ($t$) is the elapsed time, ($em$) is number of exchanged messages and ($ct$) is the amount of completed tasks.
+
+%\input{graficos/graficos_custo}
+\begin{figure}[h!]
+	\begin{center}
+		\includegraphics[scale=1.00]{avgcost.pdf}
+		\caption{Average cost of the completed tasks (considering number of exchanged messages) of each method for different scenarios  with stimulus 0.6}
+		\label{grafico:custoportarefa}
+	\end{center}
+\end{figure}
+
+Even assuming that the amount of exchanged messages is also considered in the cost of executing the tasks, the LAL algorithm still reduces it compared to Swarm-GAP, by 30.48\%, 20.95\%, 24\% and 33.73\%, respectively for the scenarios with 4, 8, 16 and 32 tasks. 
+ 
+
+\subsection{Algorithm's Runtime} \label{sec:runtime}
+
+The scenarios \ref{case:32tasks}, \ref{case:64tasks} and \ref{case:96tasks}, which are composed of 32, 64, and 96 tasks, respectively, are used to illustrate the runtime results for the proposed algorithms.
+The amount of \uavs\ in these scenarios is varied, and the number of tasks is greater. The runtime was measured in seconds, using the NetLogo profiler extension. 
+
+The results of 30 runs (mean and standard deviation) of these scenarios, with all considered metrics (see Section \ref{sec:experimental_result}), can be seen in the Tables \ref{table:allresults3uavs} and \ref{table:allresults6or9uavs}. 
+Here, the runtime analysis of each algorithm in different scenarios is highlighted in the Table \ref{table:runtime}.
+This table shows the mean total runtime in seconds, 
+the number of times the algorithm was executed and the mean runtime of each execution.
+It is worth to notice that the number of times the algorithm was executed is the same of the number of exchanged messages.
+
+\begin{table}[ht]
+	\small
+	\fontsize{8}{8}\selectfont
+	\centering
+	\caption{Runtime analysis of each method (in seconds) in different scenarios}
+	\label{table:runtime}
+	
+	\begin{tabular}{clrrrr} \hline
+		Scenario   &                               & Swarm-GAP &  AL     & SAL     & LAL    \\ \hline 
+		32 tasks   & Total runtime (mean) in sec.  & 2.9778 & 3.2434 & 4.0268 & 10.9934 \\ 
+		3 UAVs     & Execution times (mean)        & 3.0000 & 3.5333 & 3.8333 & 24.8000 \\ 
+		           & Seconds per run               & 0.9926 & 0.9179 & 1.0504 & 0.4432  \\ [1ex]
+		64 tasks   & Total runtime (mean) in sec.  & 7.2348 & 10.7935 & 9.7962 & 31.9513 \\ 
+		6 UAVs     & Execution times (mean)        & 6.0000 & 6.5333  & 6.6333 & 44.0000 \\ 
+				   & Seconds per run               & 1.2058 & 1.6520  & 1.4768 & 0.7261  \\ [1ex]
+		96 tasks   & Total runtime (mean) in sec.  & 9.0990  & 13.1253 & 12.2062 & 50.5544 \\ 
+		9 UAVs     & Execution times (mean)        & 9.0000  & 9.8667  & 9.7000  & 51.5000 \\ 
+		           & Seconds per run               & 1.0110  & 1.3302  & 1.2583  & 0.9816  \\ [1ex] \hline 
+	\end{tabular}
+\end{table} 
+
+The total runtime for AL and SAL are almost the same for each scenario. This suggests that sorting the tasks in SAL algorithm has not a great impact in the runtime. 
+The AL and SAL results are close to Swarm-GAP in the scenario with 32 tasks. 
+However, in the scenarios with 64 and 96 tasks, the availability check, that avoids the token remain in the network forever, impacts the runtime due to the greater number of tasks. 
+For instance, the AL total runtime increases by 44.24\% compared to Swarm-GAP in the scenario with 96 tasks.
+
+On the other hand, the LAL increases the total runtime for all scenarios compared to the others algorithms.
+Due to the limit to select tasks, the LAL algorithm is executed more times causing the total runtime to increase. 
+For example, in the scenario with 96 tasks, the LAL algorithm was executed on average 51.5 times -- that is the same number of exchanged messages. 
+Although the LAL presented a high total runtime, each \uav\ took 0.9816 seconds, on average, to execute the algorithm each time it received the token in this scenario with 96 tasks.
+
+\subsection{Discussions} \label{sec:discussion}
+\input{discussion}
+
+\subsection{Scalability analysis} \label{sec:scalability}
+\input{scalability}
+

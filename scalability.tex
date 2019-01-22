@@ -1,0 +1,24 @@
+In order to test the scalability of the proposed solutions, two new experimental scenarios were created. 
+They have a very large number of agents and tasks (100 \uavs\ and 500 tasks) and differ from each other by the missions' deadline. These two additional scenarios are described as follows:
+
+\begin{enumerate}
+	\setcounter{enumi}{6}
+	\item 100 \uavs; 500 tasks; 300 ticks as deadline; 750 x 750 px area size. \label{case:500tasks300deadline}
+	\item 100 \uavs; 500 tasks; 1000 ticks as deadline; 750 x 750 px area size. \label{case:500tasks1000deadline}
+\end{enumerate}
+
+It is worth mentioning that the quantities used in these scenarios extrapolate those that would be expected in a real situation. However, the intention here is to stress these numbers to discuss scalability. 
+The results (total reward, makespan, quantity and quality of completed tasks and number of exchanged messages) of 30 runs are shown in Table \ref{table:500tasks}.
+
+\input{table500tasks}
+
+The AL algorithm presented similar results to Swarm-GAP, in both scenarios (\ref{case:500tasks300deadline} and \ref{case:500tasks1000deadline}).
+SAL had an increase of around 100\% in the total reward, compared to Swarm-GAP, in both scenarios.
+LAL also outperformed Swarm-GAP in both scenarios. 
+The total reward had an improvement of 48.72\% and 103.22\% when LAL is used, compared to Swarm-GAP, respectively in scenarios \ref{case:500tasks300deadline} and \ref{case:500tasks1000deadline}.
+
+Although the LAL method presents the best results in most of the performed experiments, it was overcome by SAL in scenario \ref{case:500tasks300deadline}.
+Due to the limit of selection imposed by the LAL, each \uav\ can select no more than 3 tasks in total. This is because the deadline is 300 ticks and there are 100 \uavs\ (at each tick one \uav\ receives the token). Thus, always less than 300 tasks will be performed, even if there are 500 tasks to be performed.
+On the other hand, in the scenario \ref{case:500tasks1000deadline}, in which there is a large time window to the \uavs\ perform the tasks (1000 ticks of deadline), LAL is the best in terms of total reward.
+
+% Colocar na tabela: seconds per run??

@@ -1,0 +1,113 @@
+\documentclass[review]{elsarticle}
+
+\usepackage[utf8]{inputenc}
+\usepackage{lineno,hyperref}
+
+\usepackage{color}
+\usepackage{amsmath} % separar equação
+%\usepackage[miktex,subfolder,cleanup]{gnuplottex} % Gnuplot
+\usepackage{algorithmic}
+\usepackage[ruled,lined,noend,linesnumbered]{algorithm2e}
+\usepackage{subfigure}
+\usepackage{multicol}
+\usepackage{color}
+
+\usepackage[inline]{enumitem}
+
+\setlist[enumerate,1]{%
+	label=\roman*),ref=\roman*
+}
+
+\newlist{inlinelist}{enumerate*}{1}
+\setlist*[inlinelist,1]{%
+	label=(\alph*),ref=(\alph*)
+}
+
+\newcommand{\uav}{UAV}
+\newcommand{\uavs}{UAVs}
+
+\def\note#1{\relax}
+\definecolor{red}{rgb}{1,0,0}
+\definecolor{orange}{rgb}{1,0.5,0}
+\newcommand{\ana}[1]{\textcolor{red}{\textsc{ANA: #1}}}
+\newcommand{\jana}[1]{\textcolor{blue}{\textsc{JANAINA: #1}}}
+\newcommand{\iuli}[1]{\textcolor{green}{\textsc{IULI: #1}}}
+
+\DeclareMathOperator*{\argmax}{arg\,max}
+
+\modulolinenumbers[5]
+
+\journal{Engineering Applications of Artificial Intelligence}
+
+\begin{document}
+
+\begin{frontmatter}
+	
+\title{Solving Task Allocation Problem in Multi Unmanned Aerial Vehicles Systems Using Swarm Intelligence}
+
+%% or include affiliations in footnotes:
+\author[ufrgsaddress]{Janaína Schwarzrock}
+\ead{jschwarzrock@inf.ufrgs.br}
+
+\author[ufrgsaddress]{Iulisloi Zacarias}
+\ead{izacarias@inf.ufrgs.br}
+
+\author[ufrgsaddress]{Ana L. C. Bazzan}
+\ead{bazzan@inf.ufrgs.br}
+
+\author[brazilianarmyaddress]{Ricardo Queiroz de Araujo Fernandes}
+\ead{ricardo@cds.eb.mil.br}
+
+\author[brazilianarmyaddress]{Leonardo Henrique Moreira}
+\ead{moreira@cds.eb.mil.br}
+
+\author[ufrgsaddress]{Edison Pignaton de Freitas}
+\ead{epfreitas@inf.ufrgs.br}
+
+
+\address[ufrgsaddress]{Institute of Informatics Federal University of Rio Grande do Sul, Brazil}
+\address[brazilianarmyaddress]{Software Development Center - Brazilian Army, Brazil}
+%\linenumbers
+
+\begin{abstract}
+The envisaged usage of multiple Unmanned Aerial Vehicles (UAVs) to perform cooperative tasks is a promising concept for future autonomous military systems. An important aspect to make this usage a reality is the solution of the task allocation problem in these cooperative systems. This paper addresses the problem of tasks allocation among agents representing UAVs, considering that the tasks are created by a central entity, in which the decision of which task will be performed by each agent is not decided by this central entity, but by the agents themselves. The assumption that tasks are \textit{created} by a central entity is a reasonable one, given the way strategic planning is carried up in military operations. To enable the UAVs to have the ability to decide which tasks to perform, concepts from swarm intelligence and multi-agent system approach are used. Heuristic methods are commonly used to solve this problem, but they present drawbacks. For example, many tasks end up not begin performed even if the UAVs have enough resources to execute them. To cope with this problem, this paper proposes three algorithm variants that complement each other to form a new method aiming to increase the amount of performed tasks, so that a better task allocation is achieved. Through experiments in a simulated environment, the proposed method was evaluated, yielding enhanced results for the addressed problem compared to existing methods reported in the literature.
+
+\end{abstract}
+
+\begin{keyword}
+Unmanned Aerial Vehicles, Task Allocation, Multi-agent Systems, Swarm Intelligence
+\end{keyword}
+
+\end{frontmatter}
+
+%\linenumbers
+
+\section{Introduction} \label{sec:introduction}
+\input{introduction}
+
+\section{Background}\label{sec:background}
+\input{background}
+
+\section{Problem formulation}\label{sec:problem}
+\input{problem}
+
+\section{Proposed solution}\label{sec:methods}
+\input{methods}
+
+\section{Experimental setup}\label{sec:experimental_setup}
+\input{experimental_setup}
+
+\section{Experimental results and analysis}\label{sec:experimental_result}
+\input{results}
+
+\section{Related work}\label{sec:rw}
+\input{related_work}
+
+\section{Conclusion} \label{sec:conclusions}
+\input{conclusions}
+
+\section*{References}
+\bibliographystyle{elsarticle-num}
+\bibliography{references}
+
+\end{document}
