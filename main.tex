@@ -29,9 +29,9 @@
 \def\note#1{\relax}
 \definecolor{red}{rgb}{1,0,0}
 \definecolor{orange}{rgb}{1,0.5,0}
-\newcommand{\ana}[1]{\textcolor{red}{\textsc{ANA: #1}}}
-\newcommand{\jana}[1]{\textcolor{blue}{\textsc{JANAINA: #1}}}
-\newcommand{\iuli}[1]{\textcolor{green}{\textsc{IULI: #1}}}
+%\newcommand{\ana}[1]{\textcolor{red}{\textsc{ANA: #1}}}
+%\newcommand{\jana}[1]{\textcolor{blue}{\textsc{JANAINA: #1}}}
+%\newcommand{\iuli}[1]{\textcolor{green}{\textsc{IULI: #1}}}
 
 \DeclareMathOperator*{\argmax}{arg\,max}
 
@@ -43,39 +43,33 @@
 
 \begin{frontmatter}
 	
-\title{Solving Task Allocation Problem in Multi Unmanned Aerial Vehicles Systems Using Swarm Intelligence}
+\title{A Reproduction of the Task Allocation Problem Solution}
 
 %% or include affiliations in footnotes:
-\author[ufrgsaddress]{Janaína Schwarzrock}
-\ead{jschwarzrock@inf.ufrgs.br}
+\author[unbaddress]{Junier Caminha Amorim}
+\ead{junieramorim@aluno.unb.br}
 
-\author[ufrgsaddress]{Iulisloi Zacarias}
-\ead{izacarias@inf.ufrgs.br}
-
-\author[ufrgsaddress]{Ana L. C. Bazzan}
-\ead{bazzan@inf.ufrgs.br}
+\author[unbaddress]{Vander Alves}
+\ead{valves@unb.br}
 
 \author[brazilianarmyaddress]{Ricardo Queiroz de Araujo Fernandes}
 \ead{ricardo@cds.eb.mil.br}
 
-\author[brazilianarmyaddress]{Leonardo Henrique Moreira}
-\ead{moreira@cds.eb.mil.br}
-
 \author[ufrgsaddress]{Edison Pignaton de Freitas}
 \ead{epfreitas@inf.ufrgs.br}
 
-
+\address[unbaddress]{Computation Science Department University of Brasilia, Brazil}
 \address[ufrgsaddress]{Institute of Informatics Federal University of Rio Grande do Sul, Brazil}
 \address[brazilianarmyaddress]{Software Development Center - Brazilian Army, Brazil}
 %\linenumbers
 
 \begin{abstract}
-The envisaged usage of multiple Unmanned Aerial Vehicles (UAVs) to perform cooperative tasks is a promising concept for future autonomous military systems. An important aspect to make this usage a reality is the solution of the task allocation problem in these cooperative systems. This paper addresses the problem of tasks allocation among agents representing UAVs, considering that the tasks are created by a central entity, in which the decision of which task will be performed by each agent is not decided by this central entity, but by the agents themselves. The assumption that tasks are \textit{created} by a central entity is a reasonable one, given the way strategic planning is carried up in military operations. To enable the UAVs to have the ability to decide which tasks to perform, concepts from swarm intelligence and multi-agent system approach are used. Heuristic methods are commonly used to solve this problem, but they present drawbacks. For example, many tasks end up not begin performed even if the UAVs have enough resources to execute them. To cope with this problem, this paper proposes three algorithm variants that complement each other to form a new method aiming to increase the amount of performed tasks, so that a better task allocation is achieved. Through experiments in a simulated environment, the proposed method was evaluated, yielding enhanced results for the addressed problem compared to existing methods reported in the literature.
+In the military domain, the usage of agents to perform a set of tasks in a cooperative and autonomous way has a large potential of application in the future. One feasible scenario of application is a system formed by multiple Unmanned Aerial Vehicles (UAVs) that solves the problem of tasks allocation among agents representing each \uav. There are many strategies applied to solve this problem, but the application of swarm intelligence and multi-agent system concepts presents good results during simulations. This work was based on the replication and reproduction of experiments made using a Swarm-GAP strategy and three more variants from this to solve the allocation tasks. The reproduction confirms the results obtained and emphasizes the performance of each strategy in a static scenario showing no results dependence with the hardware used to simulate. Furthermore the replication done included some dynamic aspects to the original scenario and found issues in some strategies when context changes occur during the system is running. There are some evidences that strategies with good quality responses in a static scenario is not capable to maintain a good level of quality in dynamic contexts.
 
 \end{abstract}
 
 \begin{keyword}
-Unmanned Aerial Vehicles, Task Allocation, Multi-agent Systems, Swarm Intelligence
+Unmanned Aerial Vehicles, Task Allocation, Multi-agent Systems, Swarm Intelligence, Reproduction, Replication
 \end{keyword}
 
 \end{frontmatter}

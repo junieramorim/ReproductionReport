@@ -15,7 +15,7 @@ In case in which the task has a low-stimulus, it is performed by specialized age
 	\theta_{ij} = 1 - k_{ij}
 \end{equation}
 
-Swarm-GAP uses a communication model based on a token passing protocol, as can be observed in its pseudo code presented in Algorithm \ref{algo:swarm-gap}. Once an agent receives a token (line \ref{line:receivetoken}), it decides which tasks it will perform (line \ref{line:forall} to \ref{line:fim_ifalgo1}). The agent likelihood to choose a task is determined by the tendency $\textrm{T}_{\theta_{ij}}$ (Equation \ref{eq:tendencia}). 
+Swarm-GAP uses a communication model based on a token passing protocol, as can be observed in its pseudo code presented in Algorithm \ref{algo:swarm-gap} (from original in \cite{MAS07}). Once an agent receives a token (line \ref{line:receivetoken}), it decides which tasks it will perform (line \ref{line:forall} to \ref{line:fim_ifalgo1}). The agent likelihood to choose a task is determined by the tendency $\textrm{T}_{\theta_{ij}}$ (Equation \ref{eq:tendencia}). 
 This tendency is calculated with the task's stimulus $st_{j}$ and threshold $\theta_{ij}$.
 
 The decision also depends on the available resources (line \ref{line:ini_ifalgo1}), i.e., the agent must have enough resource to perform the task. 
@@ -29,7 +29,7 @@ When the agent decides to carry out a task, this task is allocated to the agent 
 	\SetNlSty{text}{}{:}
 	\SetNlSkip{0.3em}	
 	
-	\caption{Pseudo code of the Swarm-GAP }
+	\caption{Pseudo code of the Swarm-GAP (from Schwarzrock et al.) }
 	\label{algo:swarm-gap}
 	Receive Token\; \label{line:receivetoken}
 	Compute available resources $r_i $ \; \label{line:compute_r}
