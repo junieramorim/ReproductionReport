@@ -1,25 +1,6 @@
-The authors in \cite{ferreira2007swarm} have proposed the Swarm-GAP, an algorithm for distributed task allocation based on theoretical models of division of labor in social insect colonies. As the work here proposed is based on the Swarm-GAP, this section briefly presents an overview of this algorithm.
+An appropriate combination of swarm intelligence \cite{MOEA07} and a generalized allocation problem (GAP) strategy \cite{ferreira2007swarm} allows to generate an algorithm, based on token transmissions, that the agents perceives  in the environment or receives them from a central unity, and does the correct and optimized allocation among the agents. Its pseudo code is presented in Algorithm \ref{algo:swarm-gap} (from original in \cite{MAS07}). 
 
-Swarm-GAP allows that each agent chooses which tasks it will perform. This decision is based just on local information, thus leading to little communication the agents. The task allocation is modeled as a generalized assignment problem (GAP) and the goal is to maximize the total capability.
-Swarm-GAP is a probabilistic approach, by using the mathematical response threshold model formulated by Theraulaz et al. in \cite{theraulaz1998response}.
-
-% Atendendo ao revisor 2:
-The response threshold $\textrm{T}_{\theta_{ij}}$ (Equation \ref{eq:tendencia}) expresses the likelihood of an agent to react to task-associated stimuli $st_{j}$ and thus to execute it. The threshold $\theta_{ij}$ is based on the agent's capability to perform a task (Equation \ref{eq:limiar}). The higher the capacity, the lower the threshold. 
-In case in which the task has a low-stimulus, it is performed by specialized agents. As the stimulus of a task increases (and hence the just mentioned likelihood), less specialized agents also start performing the task \cite{bonabeau1999swarm}.
-
-\begin{equation} \label{eq:tendencia}
-	\textrm{T}_{\theta_{ij}}(st_j) = \frac{st_{j}^2}{st_{j}^2 + \theta_{ij}^2}
-\end{equation}
-
-\begin{equation} \label{eq:limiar}
-	\theta_{ij} = 1 - k_{ij}
-\end{equation}
-
-Swarm-GAP uses a communication model based on a token passing protocol, as can be observed in its pseudo code presented in Algorithm \ref{algo:swarm-gap} (from original in \cite{MAS07}). Once an agent receives a token (line \ref{line:receivetoken}), it decides which tasks it will perform (line \ref{line:forall} to \ref{line:fim_ifalgo1}). The agent likelihood to choose a task is determined by the tendency $\textrm{T}_{\theta_{ij}}$ (Equation \ref{eq:tendencia}). 
-This tendency is calculated with the task's stimulus $st_{j}$ and threshold $\theta_{ij}$.
-
-The decision also depends on the available resources (line \ref{line:ini_ifalgo1}), i.e., the agent must have enough resource to perform the task. 
-When the agent decides to carry out a task, this task is allocated to the agent (line \ref{line:aloca_sgap}) and the agent's resources are reduced accordingly (line \ref{line:decrease_r}). After that, the agent is marked as visited (\ref{line:marcavisitado}) and if there are still unallocated tasks, the agent sends the token to an agent which has not yet received that specific token (line \ref{line:ifstillavatask} to \ref{line:envia}).
+The work here proposed is based on three variations of swarm-GAP to solve an allocation problem among a team of agents, presented by Schwarzrock et al. in \cite{MAS07}. The task allocation is modeled as a generalized assignment problem (GAP) and the goal is to maximize the total capability of the agents using a probabilistic approach \cite{theraulaz1998response}.
 
 \begin{algorithm}[!ht]
 	\SetAlgoLined
@@ -47,4 +28,35 @@ When the agent decides to carry out a task, this task is allocated to the agent 
 	}
 \end{algorithm}
 
-Swarm-GAP also allows that an agent creates a token when it perceives a task in the environment that needs to be done. This feature is not further discussed here because, in the context of this work, the token with the tasks is only created by a central entity.  For more details about Swarm-GAP, see \cite{ferreira2007swarm} or \cite{ferreira2010robocup}.
+
+The purpose of this work is to present the results of the analysis about the reproducible research (RR) level of the original study. According to Madeyski and Kitchenham in \cite{exp02} the RR is referenced to the level how the experiment can be reproduced from the original data and information by others researchers. With a reproduction, the results obtained by the primary work can be validated and the information published completeness can be checked. Besides there is a significant difference between the concepts of RR and replication \cite{exp02} \cite{exp03}.
+
+Elements of impact on experiment reproducibility level can be seen in Figure \ref{grafico:elements} adapted from González et al. in \cite{exp05}. Each of these elements represents an object that can be reused in a new research. The data source is the repository or object that has all data of experiment interest. Raw Dataset represents all data retrieved, normally using a software tool, from the data source. All data extracted from the Dataset represents a processed Dataset and, after an analysis, these information generates a result Dataset.
+
+\begin{figure}[h]
+	\begin{center}
+		\includegraphics[scale=.35]{diagrama01.pdf}
+		\caption{Elements of interest for reproducibility (Adapted from González et al.)}
+		\label{grafico:elements}
+	\end{center}
+\end{figure}
+
+This model was proposed to represent the data retrieving and processing in a empirical software engineer study \cite{exp05}. The main idea is to identify elements that can be reused during the experiment replication and to measure its reproducibility.
+
+Replication in its all levels and types presented by González et al. in \cite{exp03} can creates different contexts from the original study or experiment. Variables, conditions and controls can be change to analyze the effects and impacts over the results. In empirical software engineer studies is common to apply replication in experiments to analyze the system behaviour under some conditions changes.
+
+A specific case of replication called exact replication \cite{exp04} follows all procedures of an experiment as closely as possible to determine how the results obtained will be equals to the original experiment. In this case, the concepts reproduction and replication become the synonyms. The opposite situation occurs with the conceptual replication, where a different experimental procedures are used to prove hypotheses and to answer the research questions. 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
