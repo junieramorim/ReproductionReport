@@ -11,8 +11,11 @@
 \usepackage{subfigure}
 \usepackage{multicol}
 \usepackage{color}
-
+\usepackage{graphicx}
 \usepackage[inline]{enumitem}
+
+\usepackage[dvipsnames]{xcolor}
+\definecolor{mygray}{gray}{0.8}
 
 \setlist[enumerate,1]{%
 	label=\roman*),ref=\roman*
@@ -43,7 +46,7 @@
 
 \begin{frontmatter}
 	
-\title{Extending a Swarm-GAP based Approach for Dynamic Environments}
+\title{Assessing a Swarm-GAP Based Solution for the Task Allocation Problem in Dynamic Scenarios}
 
 %% or include affiliations in footnotes:
 \author[unbaddress]{Junier Caminha Amorim}
@@ -52,24 +55,25 @@
 \author[unbaddress]{Vander Alves}
 \ead{valves@unb.br}
 
-\author[brazilianarmyaddress]{Ricardo Queiroz de Araujo Fernandes}
-\ead{ricardo@cds.eb.mil.br}
+%\author[brazilianarmyaddress]{Ricardo Queiroz de Araujo Fernandes}
+%\ead{ricardo@cds.eb.mil.br}
 
 \author[ufrgsaddress]{Edison Pignaton de Freitas}
 \ead{epfreitas@inf.ufrgs.br}
 
 \address[unbaddress]{Computation Science Department University of Brasilia, Brazil}
 \address[ufrgsaddress]{Institute of Informatics Federal University of Rio Grande do Sul, Brazil}
-\address[brazilianarmyaddress]{Software Development Center - Brazilian Army, Brazil}
+%\address[brazilianarmyaddress]{Software Development Center - Brazilian Army, Brazil}
 %\linenumbers
 
 \begin{abstract}
-Swarm-GAP is a heuristic that combines a swarm intelligence strategy with the generalized assignment problem (GAP) method. This approach is specially appropriate when there are agents in a collaborative job, but heuristics have drawbacks to optimize resources application. A previous work proposed the usage of three variations applied on the swarm-GAP algorithm to solve the problem of tasks allocation among agents representing Unmanned Aerial Vehicles (\uavs) seeking for resources optimization. However it only considered a non-dynamic scenario, where there are no attribute changes during system execution. As the original domain of application is related to military context, where the primary system requirement is to support an expected high level of dynamism, it is necessary to consider some kind of attribute changes. Therefore, the contribution of this study is to present an extension of the original work that addresses dynamism to the team's behaviour. In this new scenario, the number of agents (\uavs) changes in runtime and the adaptation occurs to maintain the mission execution in the best possible way. The extension proposed evaluation was done by conducting an independent replication of the original experiments. The resulting evidences show that some strategies with good quality responses in a static scenario are not capable to maintain a satisfactory quality level in dynamic contexts even under small attribute change. 
+Swarm-GAP is a heuristic that combines a swarm intelligence strategy with the generalized assignment problem (GAP) method. This approach is specially appropriate when there are agents engaged in a collaborative task, but in general, heuristics have drawbacks to optimize resources allocation. A previous work proposed the usage of three swarm-GAP variations to solve the problem of tasks allocation among agents representing a group of Unmanned Aerial Vehicles (\uavs) aiming at the optimization of their resources usage. However this approach considered only a non-dynamic scenario, where there is no change in the attributes characterizing the scenario during the system execution. As the original domain of application is related to military domain, where the primary system requirement is to support an expected high level of dynamism, it is necessary to consider possible changes in the set of attributes. Therefore, the contribution of this study is to obtain empirical evidence about the performance of the original algorithms in dynamic scenarios, and to propose improvements to address the dynamism that was not previously considered. The empirical assessment of the original algorithms and our extension were performed by conducting independent replications in a scenario where the number of agents (\uavs) changes in runtime and adaptations occur to maintain the mission execution. The obtained results with the original and the modified algorithms show that there is a trade-off that can be explored in terms of the resulting quality of the mission performance and the overhead in the communication among the \uavs, even considering small changes in the context attributes. 
+%%The resulting evidences show that some strategies with good quality responses in a static scenario are not capable to maintain a satisfactory quality level in dynamic contexts even under small attribute change. 
 \end{abstract}
 
 
 \begin{keyword}
-Unmanned Aerial Vehicles, Task Allocation, Swarm Intelligence, Replication
+Unmanned Aerial Vehicles, Task Allocation, Swarm Intelligence, Replication, Dynamic
 \end{keyword}
 
 \end{frontmatter}
@@ -77,107 +81,52 @@ Unmanned Aerial Vehicles, Task Allocation, Swarm Intelligence, Replication
 %\linenumbers
 
 \section{Introduction} \label{sec:introduction}
-*** 
-
-Contextualiar o trabalho citando o trabalho anterior (problema e solução) com um pouco mais de detalhe do que o abstract
-
-Apresentar a limitação existente (Problema)
-
-Apresentar a solução
-
-Apresentar a validação (replicação realizada)
-
-Mostrar a divisão do trabalho
-
-****
-
-****
-
-****
-
-
 \input{introduction}
 
 \section{Background}\label{sec:background}
-****
-
-Falar sobre Swarm-GAP e as variantes
-
-Falar sobre reprodução e replicação (enfatizando o que será usado nesse trabalho)
-
-****
-
-
 \input{background}
 
-\section{Problem and Motivation}\label{sec:problem}
-***
+\section{Research Method}\label{sec:method}
+\input{method}
 
-Mostrar a limitação do trabalho original (cenario estático)
+\subsection{Reproducibility}\label{sec:reproducibility}
+\input{reproducibility}
 
-Enfatizar a necessidade de dinamismo nesses contextos
+\subsection{Dynamic Scenario}\label{sec:dynamic_scenario}
+\input{dynamic_scenario}
 
-citar exemplos
+\subsection{Extended Algorithms}\label{sec:changes}
+\input{changes}
 
-***
+\section{Replications}\label{sec:replications}
+\input{replications}
 
+\subsection{First Replication}\label{sec:original}
+\input{original}
 
-\input{problem}
+\subsection{Second Replication}\label{sec:replication}
+\input{replication}
 
-\section{Proposed solution}\label{sec:methods}
-****
+\section{Discussion}\label{sec:discussion}
+\input{discussion}
 
-Falar da inclusao de variabilidade no nr de aeronaves em runtime
+\subsection{Findings}\label{sec:findings}
+\input{discussion2}
 
-Como é processado pela caracteristica no netlogo
+\subsection{Implications for Practice}\label{sec:implications}
+\input{discussion3}
 
-****
-%\input{methods}
+\subsection{Threats to Validity}\label{sec:threats}
+\input{discussion4}
 
-\section{Validation}\label{sec:experimental_setup}
-****
+\subsection{Limitations and Future Work}\label{sec:limitations}
+\input{discussion5}
 
-Falar da replicacao independete realizada
-
-Variáveis trabalhadas
-
-Execuções realizadas e resultados obtidos
-
-***
-
-%\input{experimental_setup}
-
-\section{Analysis and Discussion}\label{sec:experimental_result}
-*** 
-
-Análise realizada sobre os resultados obtidos e comportamento do sistema
-
-Lancar hipoteses sobre o porque de algumas estratégias terem sido melhor baseado em evidencias
-
-***
-
-%\input{results}
-
-\section{Related work}\label{sec:rw}
-****
-
-Verificar se essa seção existirá
-
-***
-
-%\input{related_work}
+\section{Related Work} \label{sec:related_works}
+\input{related_work}
 
 \section{Conclusion} \label{sec:conclusions}
-***
-
-Resumir o trabalho (4 ideias do abstract - Contexto, problema, solução avaliação)
-
-Deixar pontos abertos para futuros trabalhos
-
-***
-
-
-%\input{conclusions}
+\input{conclusions}
 
 \section*{References}
 \bibliographystyle{elsarticle-num}

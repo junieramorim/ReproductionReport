@@ -1,0 +1,28 @@
+The replications performed with the original and the extended algorithms, in dynamic context, suggested higher results difference in quality and quantity of messages sent attributes. These highlighted differences justify the choose of these two variables to analyze the algorithms behaviour and the trade-off emerging, in that new dynamic scenario. The messages exchanged represent the token being sent to the next agent in the communication network.
+
+The quality of the sensors related to the tasks guarantees that the agent is more suitable to perform it. This condition increases the results obtained even with a number of tasks performed reduction. It can be observed in Figure \ref{fig:fig03} that even the original algorithms working in dynamic context, its quality decreases significantly. 
+
+As the first contribution of this work, It was proved that the original algorithms proposed in \cite{MAS07}, and based on Swarm-GAP intelligence, work in dynamic scenarios. However, the results obtained for all variables were not in the same level of what were obtained by the original study in static context. All independent variables presented similar values when compared with the original study \cite{MAS07}, except the following:
+
+\begin{itemize}
+   \item Quality: when the UAVs are disabled (representing a taken down aircraft), the tasks allocated are not performed and the quality sum of completed tasks decreased ($\approx 40\%$) as there are fewer number of agents.
+   \item Capability: as the agent capability is calculated using the sensors quality,  and it decreases as explained above, this variable suffers a decreasing of $\approx 40\%$
+   \item Finished tasks: having less UAVs to perform the tasks, is natural that the number of finished tasks decreases. This variation was $\approx 50\%$ in most of the cases
+   \item Time elapsed: the time spent to perform the mission was less due to the fewer number of UAVs. However, the remaining UAVs used the maximum possible available time since having resources to perform tasks. Despite this, the time elapsed reduced in $\approx 15\%$ and in LAL and SAL algorithms, it was out of the standard deviation when compared with the original experiment graphs.
+\end{itemize}
+
+Even with the variation above, this solution can be applied in case of there is no another strategy available to deal with dynamic context. However, there are evidence indicating possibilities of algorithms improvement.
+
+The second contribution is the improvement proposed to those algorithms deal better with dynamic scenarios. The extended algorithms presented in Section \ref{sec:changes} was submitted to an independent replication and the results were similar to the original algorithms applied in dynamic context except by following variables:
+
+\begin{itemize}
+   \item Quality: this variable presented a significant result recovery ($\approx +40\%$) demonstrating a level equals to the original study applied to a static context (see Section \ref{sec:replication}).
+   \item Exchanged messages: the extended algorithms require more messages transmission due to the token reset. This characteristic causes an increasing of $100\%$ in the number of exchanged messages when compared with the original algorithms in dynamic context (see Section \ref{sec:replication}).
+   \item Finished tasks: the number of finished tasks reduced up to $50\%$, when compared with the original algorithms, due to the time elapsed to resend tokens when something in the context changes, and the fewer number of available UAVs im some experiments.
+\end{itemize}
+
+We noticed that even with a finished tasks reducing, the total quality increased due to the tasks reallocation that occurs when an UAV is taken down. This operation always occurs getting the maximum possible quality level based on the resources available, associating the most suitable sensors to the tasks.
+
+Thus, it is possible to increase quality results if the network aspects are not an issue and the communication structure can support the demand required to execute the extended algorithms. we identified a message traffic 3 times bigger than the original one due to the necessity of communication among the agents using the extended algorithms, that it evidences the network capability requirement.
+
+In summary, we provided evidences, with this empirical study, that there is a trade-off among the quality and exchanged message parameters when the extended algorithms here proposed are used in dynamic context described in Section \ref{sec:dynamic_scenario}. The scope of this study was relevant because the dynamic context created leaves the problem conditions closer to the real world scenario, presenting another way to perform tasks allocation.

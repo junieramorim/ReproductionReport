@@ -1,0 +1,66 @@
+%% Explain the changes made in the original algorithm and their impacts;
+%% show a workflow of the main steps of execution;
+
+To address the dynamic context described in Section \ref{sec:dynamic_scenario}, some changes were done in the original algorithms aiming to optimize the tasks allocation. This optimization occurs with the best association of the sensor with the task to be executed. The sensor designated has the best quality attribute to that type of task. 
+
+Basically, the new procedure is done in two main steps highlighted in Algorithm \ref{algo:change}: 1) Release all tasks not completed, and 2) Reset the token to reinitialize the task allocation.
+
+The algorithm implementation uses a communication structure based on a token protocol with a ring architecture. This solution defines the network behaviour and how the information is exchanged. With this strategy, the first agent visited by the token has more tasks available to choose, and this availability decreases on each visited element in the network.
+
+The first step in the proposed change comes to minimize this limitation. It is represented by the block from Line \ref{line:step1_begin} to \ref{line:step1_end} in the Algorithm \ref{algo:change} and it releases all tasks allocated to guarantee another chance to reallocate the tasks not completed.
+
+This procedure aims at optimizing task reallocation among the remaining UVAs to maximize best usage of on-board sensors. Thus, there is a new chance of an UAV being assigned a task more suitable to its sensors, since the token, running its ring path, is refilled with the tasks released. This provides a chance of another agent being assigned any of these newly available tasks.
+
+
+\begin{algorithm}[!ht]
+	\SetAlgoLined
+	\DontPrintSemicolon
+	\SetKwBlock{Loop}{loop}{end loop}
+	\SetKwFor{ForAll}{for all}{do}{end for}
+	\SetNlSty{text}{}{:}
+	\SetNlSkip{0.3em}	
+	
+	\caption{Changes to the original Swarm-GAP to insert dynamism (see Section \ref{sec:background}) }
+	\label{algo:change}
+	Receive Token\; \label{line:receivetoken}
+	Compute available resources $r_i $ \; \label{line:compute_r}
+	\ForAll{ available tasks }{ \label{line:forall}
+		Compute capability $k_{ij}$\; \label{line:compute_k}
+		Compute tendency $T_{\theta_{ij}(st)}$ \;  \label{line:compute_t}
+		\If{ roulette() $< T_{\theta_{ij}(st)}$ and $r_i \geq c_j $}{ \label{line:ini_ifalgo1}
+			Allocate task $j$ to agent $i$ \; \label{line:aloca_sgap}
+			Decrease resource $r_i$ \; \label{line:decrease_r} \label{line:fim_ifalgo1}
+		}
+	}
+	Mark agent as visited in the token\; \label{line:marcavisitado}
+	\vbox{\colorbox{mygray}{\vbox{
+	\If{a agent was dropped}{\label{line:step1_begin}
+	    \ForAll{agent $j$ alive (not dropped)}{ 
+    	    \ForAll{Task $t$ not completed in agent.(TASK\_TO\_DO) list}{ \label{line:notcompleted}
+    	        add $t$ to available tasks list in the Token \;
+    	        update costs estimated \; \label{line:costs}
+    	        adjust stimulus $st_j$ value \; \label{line:stimulus}
+            }
+        }\label{line:step1_end}
+	   
+	   \If{$j$ in agent visited list}{\label{line:step2_begin}
+	            remove agent from the list visited \;
+	            add agent to the not visited list \;
+	            clear control parameter of the token \;  \label{line:parameters} %Explain the parameters
+	            }
+        }\label{line:step2_end}
+    }}}
+	\If{there are still available tasks}{ \label{line:ifstillavatask}
+		Send the token to a not yet visited agent\; \label{line:envia}
+	}
+\end{algorithm}
+
+When the tasks are released, it is necessary to update the value of the estimated costs. The tasks not executed should not consume agent resources or leave them locked. This explains the importance of the instruction executed in Line \ref{line:costs}. 
+
+The second step of our proposal, limited by the block of lines Line \ref{line:step2_begin} to \ref{line:step2_end} is responsible for clearing the history of agents visited, ensuring the token will pass again through all UAVs that are functionally active. This step gives another chance to all agents to get another task or the same. It is done always maximizing the quality of sensors applied to the tasks execution. The parameter of Line \ref{line:parameters} refers to the counter of visiting times used by LAL algorithm.
+
+Each algorithm used (AL, SAL or LAL) has a quantity of rounds to the token. It is defined to avoid an infinite loop in the token pass and needs to guarantee a passage through all agents. Regardless of which algorithm is performed, the token reset permits to pass by the UAVs, at least, one more time than what was established. 
+
+It is useful specially in AL that uses a greedy strategy to allocate the tasks. This way, it causes a task reallocation among the remaining UAVs . As the token has the opportunity to pass by the agents more often, the number of exchanged messages increases.
+
+In the original algorithm, all three proposed variants (AL, SAL and LAL) share a common structure formed by some procedures implemented in NetLogo (see Section \ref{sec:background}), the extension was performed in a common part and it is shared by all algorithms' variants. Besides what is displayed in Algorithm \ref{algo:change}, we created auxiliary structures to control the dropped and remaining UAVs.

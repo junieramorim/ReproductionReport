@@ -1,0 +1,67 @@
+%%Talk about the replication of the original experiment in a dynamic scenario
+
+The first independent replication to collect empirical results was done with the algorithms proposed in the original work by \textit{Schwarzrock et al.}\cite{MAS07} using the dynamic context presented in Section \ref{sec:dynamic_scenario}. It aims to find evidence to either support or refute the conjecture made in the referenced study that it would be fully functional in dynamic contexts. 
+
+Table \ref{table:table01} shows the results from all experimental scenarios listed in Section \ref{sec:method}. These results show the total reward obtained with the completed tasks, the total tasks finished , the portion of total time ($[0\%,1\%]$) used to perform the maximum possible tasks, the total quality that relates sensors and tasks performed, and the number of tokens sent during the algorithms running. 
+
+\input{table01}
+
+We concentrated our analysis in all results of the experiments that used more agents (9 UAVs) and tasks (96) since they represent the highest value difference among the original study and those obtained in dynamic context. Overall, these results suggest that the original algorithms work in dynamic context. Nevertheless, of those results were significantly different from the values obtained by the original work.
+
+In the following, we present and discuss graphs comparing the results of this first replication in the dynamic context (Section \ref{sec:dynamic_scenario}) with the reproduction of original study in the static context (Section \ref{sec:reproducibility}).
+
+Finished tasks (Figure \ref{fig:fig04}) presented a reduction greater than $40\%$ due to the fact that there are fewer agents performing the mission. Indeed, as the dynamic context makes the number of agents decreases in runtime, not all tasks allocated are completed and helps to enhance this difference. 
+
+Another attribute that suffered a significant degradation (greater than $30\%$) was the quality as seen in Figure \ref{fig:fig03}. It was in consequence of the algorithms characteristics that simply discard the tasks allocated, from the available tasks list, when the agent is taken down. These tasks are not reallocated among the remaining UAVs, thus reducing the quality of sensors related to finished tasks.
+
+The quality attribute is important because it impacts on the agent capability ($k_{ij}$) and this variable correlates the sensors characteristics and the type of task showing how suitable the sensor is to perform a specific task. 
+
+\begin{figure}[h!]
+	\begin{center}
+		\includegraphics[scale=0.15]{fig/finished_orig.png}
+		\caption{Finished Tasks (96 tasks; 9 UAVs; 300 x 240; 300 ticks)}
+		\label{fig:fig04}
+	\end{center}
+\end{figure}
+
+\begin{figure}[h!]
+	\begin{center}
+		\includegraphics[scale=0.15]{fig/quality_orig.png}
+		\caption{Quality (96 tasks; 9 UAVs; 300 x 240; 300 ticks)}
+		\label{fig:fig03}
+	\end{center}
+\end{figure}
+
+On another hand, other attributes presented very similar results to the original experiment as the number of messages exchanged, and total reward and time.
+
+The ring network relies on passing a token to each element. Even reducing the number of elements, the number of messages did not reduce because the token runs while it has task available or there is an UAV not visited by the token.
+
+As the total reward is the sum of the UAV capability $k_{ij}$ related to the task finished, and the capability, defined in \cite{MAS07}, is a correlation among distance to the task and the sensor quality, the reduction of one is offset by the other, as confirmed by Figure \ref{fig:fig02}.
+
+\begin{figure}[h!]
+	\begin{center}
+		\includegraphics[scale=0.15]{fig/msg_orig.png}
+		\caption{Messages exchanged (96 tasks; 9 UAVs; 300 x 240; 300 ticks)}
+		\label{fig:fig01}
+	\end{center}
+\end{figure}
+
+\begin{figure}[h!]
+	\begin{center}
+		\includegraphics[scale=0.15]{fig/reward_orig.png}
+		\caption{Total Reward (96 tasks; 9 UAVs; 300 x 240; 300 ticks)}
+		\label{fig:fig02}
+	\end{center}
+\end{figure}
+
+\begin{figure}[h!]
+	\begin{center}
+		\includegraphics[scale=0.15]{fig/time_orig.png}
+		\caption{Time Elapsed (96 tasks; 9 UAVs; 300 x 240; 300 ticks)}
+		\label{fig:time}
+	\end{center}
+\end{figure}
+
+The time measurement was done in percentage of total mission time (in ticks) utilization. This total time was kept the same compared of original experiment and equals to 300 ticks. The result obtained was equivalent, considering the standard deviation (see Figure \ref{fig:time}). It is explained because the dynamic scenario ensures at least one UAV and this agent spends the most of time (in ticks) available to execute the tasks allocated to it.
+
+According to what was presented in \cite{MAS07} and \cite{ferreira2007swarm}, the more suitable value for $stimulus$ attribute is $0.6$. However, during the replications, we investigated different values. The resulting differences were not significant compared to those using the original $stimulus$ value in a static context reproduction. Therefore, all final results obtained in this section were based on the $stimulus = 0.6$

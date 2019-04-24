@@ -1,0 +1,20 @@
+The analysis of the empirical replications in software engineering were performed by many authors \cite{exp05, exp04, exp03, exp01}. They presented requirements to classify an experiment as reproducible and some guidelines to perform a reproduction and the main experiment elements to get attention during a replication. \textit{Madeyski and Kitchenham} \cite{exp02} presented the difference among replication and reproduction highlighting aspects to guide an independent replication, that it was used in the present work.
+
+According to \textit{Madeyski and Kitchenham} \cite{exp02}, reproducible research (RR) is defined as a study that can be reproduced from all information and data registered about its experiments. As a fundamental requirement to perform the replication, the original study was assessed for its reproducibility.
+
+Based on that definition, the original study presented by \textit{Schwarzrock et al.} \cite{MAS07} can be classified as a RR since we reproduced all experiments done previously obtaining results where the difference from the original ones are inside the standard deviation. Table \ref{table:variables} shows all independent and dependent variables used by the experiment reproduction and the slight differences obtained were due to the distinct hardware configurations when compared with that used by the original experiments. This procedure aimed to analyze how the results would be equal to the original experiment in similar conditions of execution, including the number of executions of thirty times for each algorithm.
+
+To explore different situations regarding mission complexity and available resources, the original and the reproduced experimental scenarios were the following:
+
+\begin{enumerate}
+	\item 3 \uavs; 4 tasks; 300 ticks as deadline; 100 x 80 px area size, \label{case:4tasks}
+	\item 3 \uavs; 8 tasks; 300 ticks as deadline; 100 x 80 px area size, \label{case:8tasks}
+	\item 3 \uavs; 16 tasks; 300 ticks as deadline; 100 x 80 px area size, \label{case:16tasks}
+	\item 3 \uavs; 32 tasks; 300 ticks as deadline; 100 x 80 px area size, \label{case:32tasks}
+	\item 6 \uavs; 64 tasks; 300 ticks as deadline; 200 x 160 px area size, \label{case:64tasks}
+	\item 9 \uavs; 96 tasks; 300 ticks as deadline; 300 x 240 px area size. \label{case:96tasks}
+\end{enumerate}
+
+The software used to perform all experiments presented by this work was the same of the original study\cite{MAS07}. It is NetLogo, version 5.3.1, a multi-agent programmable modeling environment. This choice ensured to keep the previous code compatibility and permitted its fully reuse, besides allowing to implement changes in reproductions described later.
+
+\input{table05}

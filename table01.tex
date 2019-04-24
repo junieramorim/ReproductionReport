@@ -1,0 +1,35 @@
+\begin{table}%[ht]
+	\small
+	\fontsize{6}{6}\selectfont
+	\centering
+	\caption{Total reward, elapsed time, quantity and quality of the completed tasks and number of exchanged messages(tokens sent) for 100 runs of each algorithm with the following attributes: 9 UAVs and 96 tasks in area of 300x240 pixels with deadline of 300 ticks.}
+	\label{table:table01}
+	
+	\begin{tabular}{rrrrr} \hline
+		& AL
+		& SAL
+		& LAL \\ \hline 
+		
+		& Mean (St.Dev.)  & Mean (St.Dev.)  & Mean (St.Dev.)  \\ [1ex]
+		
+		\multicolumn{5}{l}{\textbf{Results of the reference study in the same original static context}} \\
+	Total reward           & 16.724   ($\pm$2.1908)  & 37.9608  ($\pm$1.1119) & 44.733  ($\pm$1.5961)   \\
+	Elapsed time (norm)    & 0.9894   ($\pm$0.0064)  &  0.9763  ($\pm$0.0092) & 0.9693  ($\pm$0.0124)    \\ 
+	Comp. tasks (norm)     & 0.2774   ($\pm$0.0276)  &  0.4674  ($\pm$0.0170) & 0.5226  ($\pm$0.0162)    \\ 
+	Quality (norm)         & 0.7865   ($\pm$0.0641)  &  0.9680  ($\pm$0.0202) & 0.9752  ($\pm$0.0159)   \\ 
+	Sending token          &  9.8667  ($\pm$1.1958)  &  9.7000  ($\pm$1.2360) & 51.500 ($\pm$1.4797)   \\ [1ex]
+		
+		\multicolumn{5}{l}{\textbf{Independent replication using the dynamic context (number of UAVs changes)}} \\
+	Total reward           & 8.6995  ($\pm$1.9489)  & 23.6496 ($\pm$2.6004) &  28.348  ($\pm$2.8464)  \\
+	Elapsed time (norm)    & 0.9767  ($\pm$0.0135)  & 0.9652  ($\pm$0.0220) &  0.9513  ($\pm$0.0281)  \\ 
+	Comp. tasks (norm)     & 0.1418  ($\pm$0.0281)  & 0.2852  ($\pm$0.0315) &  0.3278  ($\pm$0.0328)  \\ 
+	Quality (norm)         & 0.5753  ($\pm$0.1421)  & 0.5751  ($\pm$0.1358) &  0.5858  ($\pm$0.1424)  \\ 
+	Sending token          & 10.0900 ($\pm$1.3416)  & 9.9800  ($\pm$1.1805) &  49.4600 ($\pm$1.9562)  \\ [1ex]
+
+		\hline
+	\end{tabular}
+\end{table} 
+
+
+
+
