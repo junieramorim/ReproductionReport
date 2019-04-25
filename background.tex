@@ -6,7 +6,7 @@ The task allocation problem solution proposed by \textit{Schwarzrock et al.} in 
    \item \textit{Limit and Allocation Loop (LAL)}: increases SAL's behavior and defines a task selection limit per UAV in each round to prevent a greedy strategy and idle agents;
 \end{itemize}
 
-Algorithms \ref{algo:swarm-gap} and \ref{algo:swarm-gap2} show the pseudo code of SAL and AL. The LAL algorithm code was not listed due to its similarity with SAL.
+Algorithms \ref{algo:swarm-gap} and \ref{algo:swarm-gap2} show the pseudo code of SAL and AL. The LAL algorithm code was not listed due to its similarity with SAL and the lines \ref{line:ALini} to \ref{line:ALfim} of the Algorithm \ref{algo:swarm-gap} are common to all of them.
 
 \begin{algorithm}[h!t]
 	\caption{Pseudo code - Allocation loop (AL) (from Schwarzrock et al.\cite{MAS07})}
@@ -21,7 +21,15 @@ Algorithms \ref{algo:swarm-gap} and \ref{algo:swarm-gap2} show the pseudo code o
 	
 	Receive Token\; \label{line:recebe}
 	
-	Select the tasks that it will perform (lines \ref{line:compute_r} to \ref{line:decrease_r} of the Algorithm \ref{algo:swarm-gap}) \;
+	Compute available resources $r_i $ \; \label{line:compute_r}
+	\ForAll{ available tasks }{ \label{line:forall}
+		Compute capability $k_{ij}$\; \label{line:compute_k}
+		Compute tendency $T_{\theta_{ij}(st)}$ \;  \label{line:compute_t}
+		\If{ roulette() $< T_{\theta_{ij}(st)}$ and $r_i \geq c_j $}{ \label{line:ini_ifalgo1}
+			Allocate task $j$ to agent $i$ \; \label{line:aloca_sgap}
+			Decrease resource $r_i $\; \label{line:decrease_r} \label{line:fim_ifalgo1}
+		}
+	}
 	
 	Mark agent as visited in the token\; \label{line:ALini}
 	\If{there are still available tasks}{
@@ -78,12 +86,14 @@ k_{ij} = \frac{\max_{g \in J} \{d(i,g)\} - d(i,j)}{\max_{g \in J} \{d(i,g)\}} \t
 	Sort tasks by descending tendency\; \label{line:sortbyTend}
 	
 	\ForAll{ available tasks sorted by tendency }{
-		The same as lines \ref{line:ini_ifalgo1} to \ref{line:fim_ifalgo1} of the Algorithm \ref{algo:swarm-gap}
-
+		\If{ roulette() $< T_{\theta_{ij}(st)}$ and $r_i \geq c_j $}{ \label{line:ini_ifalgo1}
+			Allocate task $j$ to agent $i$ \; \label{line:aloca_sgap}
+			Decrease resource $r_i $\; \label{line:decrease_r} \label{line:fim_ifalgo1}
+		}
 	}
 	
-	The same as lines \ref{line:ALini} to \ref{line:ALfim} of the Algorithm \ref{algo:swarm-gap-loop} \;
+	The same as lines \ref{line:ALini} to \ref{line:ALfim} of the Algorithm \ref{algo:swarm-gap} \;
 	
 \end{algorithm}
 
-In the scenario adopted by \textit{Schwarzrock et al.}\cite{MAS07}, each UAV can perform more than one task but each task can be performed by only one agent. The mission transmission, by a Central Command, is done using a token-based protocol that transmits all information about the tasks and agents association. With this protocol, when a specific UAV chooses a task and allocate it to itself, it sends this information to the next agent of the team. Thus, the next agent will know which tasks are available to be executed. Furthermore, the time unit used to measure the execution of these algorithms was the \textit{tick}.
+In the scenario adopted by \textit{Schwarzrock et al.}\cite{MAS07}, each UAV can perform more than one task but each task can be performed by only one agent. The mission transmission, by a Central Command, is done using a token-based protocol that transmits all information about the tasks and agents association. With this protocol, when a specific UAV chooses a task and allocate it to itself, it sends this information to the next agent of the team. Thus, the next agent will know which tasks are available to be executed. Furthermore, \textit{tick} is the unit used to measure the execution time of these algorithms.
