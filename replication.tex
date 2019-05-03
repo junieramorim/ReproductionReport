@@ -1,43 +1,46 @@
 The second independent replication was done with the extended algorithms (AL, SAL and LAL) previously presented in Section \ref{sec:changes}. The assessment was done in the same dynamic context used by the first replication (see Section \ref{sec:original}), following similar original algorithms conditions and variables values.
 
-Table \ref{table:table02} shows total reward obtained with the completed tasks, elapsed time to perform the tasks, completed tasks, the quality obtained with the completed tasks and the total tokens sent. These results were obtained applying the independent variables of 100 executions, 96 tasks, 9 UAVs and the same \textit{stimulus} and sensors quality used by the original algorithms.
+Table \ref{table:table02} shows the total reward obtained with the completed tasks, elapsed time to perform the tasks, number of completed tasks, the quality obtained with the completed tasks and the total number of tokens sent. These results were obtained applying the independent variables of 100 executions, 96 tasks, 9 UAVs and the same \textit{stimulus} and sensors quality used by the original experiments.
 
 \input{table02}
 
-The results obtained by these modified algorithms, with small number of UAVs(3) and tasks (4, 8 and 16), presented less difference from the original algorithms in dynamic context (Section \ref{sec:original}. As the number of elements is low, the differences are within the standard deviation. Therefore, we used the largest group (9 UAVs and 96 tasks) to emphasize the values variation. Table \ref{table:table03} shows the results of quality and number of exchanged messages obtained by this replication but with fewer UAVs and a different number of tasks.
+The results obtained by these modified algorithms, with small number of UAVs(3) and tasks (4, 8 and 16), presented less difference from the original algorithms in the dynamic scenario (Section \ref{sec:original}. As the number of elements is low, the differences are within the standard deviation. Therefore, the largest group (9 UAVs and 96 tasks) was used to emphasize the variation values. Table \ref{table:table03} shows the results of quality and number of exchanged messages obtained by this replication, but with fewer UAVs and a different number of tasks.
 
 \input{table03.tex}
 
-Overall, the data from Table \ref{table:table03} show that we have, after the modifications described in Section \ref{sec:changes} resulting in extended algorithms, different results when compared with the original ones in dynamic scenario. From all attributes, quality and messages exchanged were those with more significant variation.
+Overall, the data from Table \ref{table:table03} show that after the modifications described in Section \ref{sec:changes}, resulting in extended algorithms, different results were obtained  compared with the original ones in the dynamic scenario. From all assessed metrics, quality and number of exchanged messages were those with more significant variation.
 
-In particular, the number of messages increases over 100\% with the modified algorithms, indicating a network overhead. The results of exchanged messages to the original and modified algorithms can be seen in Figure \ref{fig:fig06}.
+In particular, the number of messages increases over 100\% with the modified algorithms, indicating a communication overhead. The results of exchanged messages to the original and modified algorithms can be seen in Figure \ref{fig:fig06}.
 
 \begin{figure}[h!]
 	\begin{center}
-		\includegraphics[scale=0.15]{fig/fig06.png}
-		\caption{Messages exchanged of the original algorithm in the static context(reproduction), in the dynamic context (replication) and the modified algorithms in dynamic context (96 tasks; 9 UAVs; 300 x 240; 300 ticks)}
+		%\includegraphics[scale=0.15]{fig/fig06.png}
+		\includegraphics[scale=0.15]{fig/GRAPH06.png}
+		\caption{Exchanged messages  of the original algorithm in the static scenario (reproduction), in the dynamic scenario (replication) and the modified algorithms in dynamic scenario (96 tasks; 9 UAVs; 300 x 240; 300 ticks)}
 		\label{fig:fig06}
 	\end{center}
 \end{figure}
 
 This overhead can be explained by the token reset made in the modified algorithms (see Line \ref{line:step2_begin} in the Algorithm \ref{algo:change}). Resetting the token allows it to run more often among the UAVs, generating more messages exchanged among these elements.
 
-Figure \ref{fig:fig05} shows that the extended algorithms presented an increasing of around 40\% in quality variable when compared with what was obtained in the first replication (Section \ref{sec:original}. This recovering was due to the task redistribution with the token reset after a context change with an UAV removed. The new token round through the UAVs ensures to reallocate the tasks always aiming to maximize the quality results, relating the task with the agent that has the best sensor to perform it.
+Figure \ref{fig:fig05} shows that the extended algorithms presented an increase of around 40\% in the quality metric compared with what was obtained in the first replication (Section \ref{sec:original}. This recovering was due to the task redistribution with the token reset after a context change with a UAV removed from the team. The new token round through the UAVs ensures to reallocate the tasks always aiming to maximize the quality results, relating the task with the agent that has the best sensor to perform it.
 
 \begin{figure}[h!]
 	\begin{center}
-		\includegraphics[scale=0.15]{fig/fig05.png}
-		\caption{Quality of the original algorithm in the static context(reproduction), in the dynamic context (replication) and the modified algorithms in dynamic context (96 tasks; 9 UAVs; 300 x 240; 300 ticks)}
+		%\includegraphics[scale=0.15]{fig/fig05.png}
+		\includegraphics[scale=0.15]{fig/GRAPH07.png}
+		\caption{Quality of the original algorithm in the static scenario (reproduction), in the dynamic scenario (replication) and the modified algorithms in dynamic scenario (96 tasks; 9 UAVs; 300 x 240; 300 ticks)}
 		\label{fig:fig05}
 	\end{center}
 \end{figure}
 
- Figure \ref{fig:din02} shows the elapsed time to perform all tasks allocated to the UAVs. It presented a slight decreasing of around 5\% because the agents spend more time communicating and adjusting the tasks allocation in order to optimize the quality. It results in less time available to execute the tasks due to the reallocation. However, the difference among the three algorithms (AL, SAL and LAL) in the dynamic context, runs into the standard deviation as seen in Figure \ref{fig:din02}.
+ Figure \ref{fig:din02} shows the elapsed time to perform all tasks allocated to the UAVs. It presented a slight decrease of around 5\% because the agents spend more time communicating and adjusting the tasks allocation in order to optimize the quality. It results in less time available to execute the tasks due to the reallocation. However, the difference among the three algorithms (AL, SAL and LAL) in the dynamic context, runs into the standard deviation as seen in Figure \ref{fig:din02}.
  
 \begin{figure}[h!]
 	\begin{center}
-		\includegraphics[scale=0.15]{fig/din3.png}
-		\caption{Time elapsed in the dynamic context (replication) to the original algorithm in static context (reproduction), in the dynamic context (replication) and the modified ones(96 tasks; 9 UAVs; 300 x 240; 300 ticks)}
+		%\includegraphics[scale=0.15]{fig/din3.png}
+		\includegraphics[scale=0.15]{fig/GRAPH08.png}
+		\caption{Elapsed Time  in the dynamic scenario (replication) to the original algorithm in static scenario (reproduction), in the dynamic scenario (replication) and the modified ones (96 tasks; 9 UAVs; 300 x 240; 300 ticks)}
 		\label{fig:din02}
 	\end{center}
 \end{figure}
@@ -47,17 +50,20 @@ Analyzing the number of finished tasks, it is visible a decrease comparing the a
 \begin{figure}[!htb]
 \centering
 \subfloat{
-\includegraphics[scale=0.1]{fig/box1.png}
+%\includegraphics[scale=0.1]{fig/box1.png}
+\includegraphics[scale=0.1]{fig/BOX01.png}
 }
 \quad
 \subfloat{
-\includegraphics[scale=0.1]{fig/box2.png}
+%\includegraphics[scale=0.1]{fig/box2.png}
+\includegraphics[scale=0.1]{fig/BOX02.png}
 }
 \quad
 \subfloat{
-\includegraphics[scale=0.1]{fig/box3.png}
+%\includegraphics[scale=0.1]{fig/box3.png}
+\includegraphics[scale=0.1]{fig/BOX03.png}
 }
-\caption{Finished tasks to the original algorithm in static context (reproduction), in the dynamic context (replication) and the modified ones (96 tasks; 9 UAVs; 300 x 240; 300 ticks)}
+\caption{Finished tasks to the original algorithm in static scenario (reproduction - REPRO), in the dynamic scenario (first replication - REPL #1) and the extended algorithm in dynamic context (second replication - REPL #2) with the attributes: 96 tasks; 9 UAVs; 300 x 240; 300 ticks and 100 executions}
 \label{fig:box01}
 \end{figure}
 
@@ -73,4 +79,4 @@ The confirmation of the statistical significance of the difference of such value
 
 For this replication, the $stimulus$ value applied was of $0.6$. It is the same value applied by the original work and the reproduction done in the beginning of the present study (see Section \ref{sec:method}). The justification of its use is presented in \cite{MAS07} and \cite{ferreira2007swarm}.
 
-As it was done in Section \ref{sec:original}, different values to the \textit{stimulus} attribute were tested. However, when the results obtained with different \textit{stimulus} values were compared, the variation stayed into the standard deviation. To permit a faithful final comparison in this work, we adopted the value used by the original work \cite{MAS07} of $0.6$ to this independent variable ( see Section \ref{sec:discussion}).
+As it was done in Section \ref{sec:original}, different values to the \textit{stimulus} attribute were tested. However, when the results obtained with different \textit{stimulus} values were compared, the variation stayed into the standard deviation. To allow a faithful final comparison in this work, the value used by the original work \cite{MAS07} of $0.6$ was also used to this independent variable ( see Section \ref{sec:discussion}).
