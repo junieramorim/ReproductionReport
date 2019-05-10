@@ -2,19 +2,19 @@
 
 The first independent replication to collect empirical results was done with the algorithms proposed in the original work by \textit{Schwarzrock et al.}\cite{MAS07} using the dynamic scenario presented in Section \ref{sec:dynamic_scenario}. It aims to find evidence to either support or refute the conjecture made in the referenced study that it would be fully functional in dynamic scenarios. 
 
-Table \ref{table:table01} shows the results from all experimental scenarios listed in Section \ref{sec:method}. These results show the total reward obtained with the completed tasks, the total tasks that were finished, the portion of total time ($[0\%,1\%]$) used to perform the maximum possible tasks, the total quality that relates the sensors and the performed tasks, and the number of tokens sent during the execution of the experiments. 
+Table \ref{table:table01} shows the results from all algorithms proposed by the original study \cite{MAS07} applied to dynamic context. These results show the total reward obtained with the completed tasks, the total tasks that were finished, the portion of total time ($[0\%,1\%]$) used to perform the maximum possible tasks, the total quality that relates the sensors and the performed tasks, and the number of tokens sent during the execution of the experiments. Some results are normalized to make the comparisons easier. 
 
 \input{table01}
 
-The analysis concentrates in all results of the experiments that used more agents (9 UAVs) and tasks (96) since they represent the highest value difference between the original study and those obtained in the dynamic scenario. Overall, these results suggest that the original algorithms work in a dynamic scenario. Nevertheless, those results were significantly different from the values obtained by the original work.
+The analysis concentrates in all results of the experiments that used more agents (9 UAVs) and tasks (96) since they represent the highest value difference between the dependent variables of the original study and those obtained in the dynamic scenario. All other results are available in the repository\footnote{https://github.com/junieramorim/replicationMaterial}. Overall, these results suggest that the original algorithms work in a dynamic scenario due to the average level obtained with no inconsistent value to all variables, e.g., zero or negative values. Nevertheless, those results were significantly different from the values obtained by the original work.
 
-Graphs comparing the results obtained with this first replication in the dynamic scenario (Section \ref{sec:dynamic_scenario}) and the reproduction of original study in the static context are presented in the following, along with a related discussion (Section \ref{sec:reproducibility}).
+Graphs comparing the results obtained with this first replication in the dynamic scenario (Section \ref{sec:dynamic_scenario}) and the reproduction of original study in the static context are presented in the following, along with a related discussion.
 
-The metric concerning the number of finished tasks (Figure \ref{fig:fig04}) presented a reduction greater than $40\%$ due to the fact that there are fewer agents performing the mission. Indeed, as the dynamic scenario makes the number of agents decreases in runtime, not all tasks allocated are completed, which explains this difference. 
+The metric concerning the number of finished tasks (Figure \ref{fig:fig04}) presented a reduction greater than $40\%$ due to the fact that there are fewer agents performing the mission. Indeed, as the dynamic scenario makes the number of agents decreases at runtime, not all tasks allocated are completed, which explains this difference. 
 
-Another metric that suffered a significant degradation (greater than $30\%$) was the quality, as seen in Figure \ref{fig:fig03}. It was in consequence of the algorithms characteristics that simply discard the allocated tasks, from the available tasks list, when the agent is shut down. These tasks are not reallocated among the remaining UAVs, thus reducing the quality of the sensors related to the finished tasks.
+Another metric that suffered a significant degradation (greater than $30\%$) was the quality, as seen in Figure \ref{fig:fig03}. This quality is calculated as a sum of the sensors compatibility with the tasks, i.e., each sensor has a number between 0 and 1 that defines how suitable this sensor is to be used in a specific task, correlating the sensors characteristics and the type of task. This number ($Q_{ij}$) defines the agent $i$ quality to perform the task $j$ and it is used to calculate the agent capability ($k_{ij}$) (Equation \ref{eq:capability}).
 
-The quality metric is important because it impacts on the agent capability ($k_{ij}$) and this variable correlates the sensors characteristics and the type of task showing how suitable the sensor is to perform a specific task. 
+The reduction in this attribute was in consequence of the algorithms characteristics that simply discard the allocated tasks, from the available tasks list, when the agent is shut down. These tasks are not reallocated among the remaining UAVs, thus reducing the quality of the sensors related to the finished tasks.
 
 \begin{figure}[h!]
 	\begin{center}
@@ -36,9 +36,9 @@ The quality metric is important because it impacts on the agent capability ($k_{
 
 On another hand, other metrics presented very similar results to the original experiment, as the number of messages exchanged, and the total reward and execution time.
 
-The ring network relies on passing a token to each element. Even reducing the number of elements, the number of messages did not reduce because the token runs while it has tasks available or there is a UAV not visited by the token.
+The ring network relies on passing a token to each element. Even reducing the number of elements, the number of messages did not decrease because the token runs while it has tasks available or there is a UAV not visited by the token.
 
-As the total reward is the sum of the UAV capability $k_{ij}$ related to the finished task, and the capability, defined in \cite{MAS07}, is a correlation among distance to the task and the sensor quality, the reduction of one is offset by the other, as confirmed by Figure \ref{fig:fig02}.
+As the total reward is the sum of the UAV capability $k_{ij}$ related to the finished tasks, and the capability, defined in \cite{MAS07}, is a function of distance to the task and sensor quality, the reduction of quality causes a proportional decrease in the capability, as confirmed by Figure \ref{fig:fig02}.
 
 \begin{figure}[h!]
 	\begin{center}
@@ -67,6 +67,6 @@ As the total reward is the sum of the UAV capability $k_{ij}$ related to the fin
 	\end{center}
 \end{figure}
 
-The time measurement was done in percentage of total mission time (in ticks) utilization. This total time was kept the same compared of original experiment and equals to 300 ticks. The result obtained was equivalent, considering the standard deviation (see Figure \ref{fig:time}). It is explained because the dynamic scenario ensures at least one UAV and this agent spends the most of the available time (in ticks) to execute the tasks allocated to it.
+The time measurement was done in percentage of total mission time (in ticks) utilization. The result obtained was equivalent to the original study experiments, considering the standard deviation (see Figure \ref{fig:time}). It is explained because the dynamic scenario ensures at least one UAV and this agent spends the most of the available time (in ticks) to execute the tasks allocated to it.
 
 According to what was presented in \cite{MAS07} and \cite{ferreira2007swarm}, the more suitable value for $stimulus$ parameter is $0.6$. However, during the replications, different values were investigated. The resulting differences were not significant compared to those using the original $stimulus$ value in a static context reproduction. Therefore, all final results obtained in this section were based on the $stimulus = 0.6$

@@ -1,15 +1,15 @@
 %% Explain the changes made in the original algorithm and their impacts;
 %% show a workflow of the main steps of execution;
 
-To address the dynamic scenario described in Section \ref{sec:dynamic_scenario}, changes were implemented in the original algorithms aiming to optimize the tasks allocation. This optimization occurs with the best association of the sensor with the task to be executed, i.e. chose the sensor that has the best quality attribute to that type of task. 
+To address the dynamic scenario described in Section \ref{sec:dynamic_scenario}, changes were implemented in the original algorithms aiming to optimize task allocation. This optimization occurs with the best association of the sensor with the task to be executed, i.e., chosing the sensor that has the best quality attribute to that kind of task. 
 
-The new procedure is represented by the Algorithm \ref{algo:change} and inserted after the line \label{line:ALini} of the Algorithm \ref{algo:swarm-gap}. Basically, it is done in two main steps: 1) Release all tasks not completed, and 2) Reset the token to reinitialize the task allocation. 
+The new procedure is represented by Algorithm \ref{algo:change} and inserted after line \ref{line:AL_ini} of Algorithm \ref{algo:swarm-gap}. Basically, it is done in two main steps: 1) Release all tasks not completed, and 2) Reset the token to reinitialize the task allocation. 
 
 The algorithm implementation uses a communication structure based on a token protocol with a ring architecture (token ring). This solution defines the network behaviour and how the information is exchanged. With this strategy, the first agent visited by the token has more tasks available to choose, and this availability decreases on each visited element in the network.
 
-The first step in the proposed change comes to minimize this limitation. It is represented by the block from Line \ref{line:step1_begin} to \ref{line:step1_end} in the Algorithm \ref{algo:change} and it releases all allocated tasks to guarantee another chance to reallocate the tasks not completed yet.
+The first step in the proposed change comes to minimize a limitation in the token-based protocol with a ring architecture (token ring). This limitation is the available tasks reduction when the token reaches each agent forming the ring, that allocates one o more tasks reducing the number of tasks to allocation. This change is represented by the block from line \ref{line:step1_begin} to line \ref{line:step1_end} in Algorithm \ref{algo:change} and it releases all allocated tasks to guarantee another chance to reallocate not yet completed tasks.
 
-This procedure aims at optimizing the task reallocation among the remaining UAVs to maximize the best usage of the on-board sensors. Thus, there is a new chance of a UAV be assigned to a task more suitable to its sensors, since the token, running its ring path, is refilled with the released tasks. This provides a chance of another agent being assigned any of these newly available tasks.
+This procedure aims at optimizing the task reallocation among the remaining UAVs to maximize the best usage of the on-board sensors. Thus, there is a new chance of an UAV being assigned to a task more suitable to its sensors, since the token, running its ring path, is refilled with the released tasks. This provides the possibility of another agent being assigned any of these newly available tasks.
 
 %% Comentei as linhas que são comuns aos algoritmos AL, SAL e LAL, deixando apenas o que causa alteração e foi inserido no código original
 \begin{algorithm}[!ht]
@@ -20,7 +20,7 @@ This procedure aims at optimizing the task reallocation among the remaining UAVs
 	\SetNlSty{text}{}{:}
 	\SetNlSkip{0.3em}	
 	
-	\caption{Code inserted into the three variants proposed by \textit{Schwarzrock et al.} in \cite{MAS07} to deal better with the dynamism defined by Section \ref{sec:dynamic_scenario} }
+	\caption{Code inserted into the three variants proposed by \textit{Schwarzrock et al.} in \cite{MAS07} to  better deal with the dynamism defined in Section \ref{sec:dynamic_scenario} }
 	\label{algo:change}
 %	Receive Token\; \label{line:receivetoken}
 %	Compute available resources $r_i $ \; \label{line:compute_r}
@@ -34,11 +34,11 @@ This procedure aims at optimizing the task reallocation among the remaining UAVs
 %	}
 %	Mark agent as visited in the token\; \label{line:marcavisitado}
 %	\vbox{\colorbox{mygray}{\vbox{
-	\If{a agent was dropped}{\label{line:step1_begin}
+	\If{an agent was dropped}{\label{line:step1_begin}
 	    \ForAll{agent $j$ alive (not dropped)}{ 
     	    \ForAll{Task $t$ not completed in agent.(TASK\_TO\_DO) list}{ \label{line:notcompleted}
     	        add $t$ to available tasks list in the Token \;
-    	        update costs estimated \; \label{line:costs}
+    	        update estimated costs (ticks) \; \label{line:costs}
     	        adjust stimulus $st_j$ value \; \label{line:stimulus}
             }
         }\label{line:step1_end}
@@ -55,14 +55,14 @@ This procedure aims at optimizing the task reallocation among the remaining UAVs
 %	}
 \end{algorithm}
 
-When the tasks are released, it is necessary to update the value of the estimated costs. The tasks not executed should not consume agent resources or leave them locked. This explains the importance of the instruction executed in line \ref{line:costs} of the Algorithm \ref{algo:change}. 
+When the tasks are released, it is necessary to update the value of the estimated costs in terms of \textit{ticks}, i.e., it is necessary to recalculate the time in \textit{ticks} necessary to move to the task and to execute it. The tasks not executed should not consume agent resources or leave them locked. This explains the importance of the instruction executed in line \ref{line:costs} of Algorithm \ref{algo:change}. 
 
-The second step of the proposed proposal, limited by the block of lines \ref{line:step2_begin} to \ref{line:step2_end}, in the Algorithm \ref{algo:change}, is responsible for clearing the history of the visited agents, ensuring the token will pass again through all UAVs that are functionally active. This step gives another chance to all agents to get another task or the same. It is done always maximizing the quality of sensors applied to the tasks. The parameter of line \ref{line:parameters} in the Algorithm \ref{algo:change} refers to the counter of visiting times used by LAL algorithm.
+The second step, limited by the block of lines \ref{line:step2_begin} to \ref{line:step2_end}, in the Algorithm \ref{algo:change}, is responsible for clearing the history of the visited agents, ensuring the token will pass again through all UAVs that are functionally active. This step then gives another chance to all agents to get another task or the same. It is always done maximizing the quality of sensors applied to the tasks. The parameter of line \ref{line:parameters} of Algorithm \ref{algo:change} refers to the counter of visiting times used by LAL.
 
-Each algorithm (AL, SAL or LAL) has a quantity of rounds to the token. It is defined to avoid an infinite loop in the token pass and it needs to guarantee a passage through all agents. Regardless of which algorithm is performed, the token reset permits to pass by the UAVs, at least, one more time than what was established. 
+In the original algorithm, all three proposed variants (AL, SAL and LAL) share a common structure formed by some procedures implemented in NetLogo (Section \ref{sec:background}). The proposed extension was performed in a common part and it is shared by all these variants. Besides what is displayed in Algorithm \ref{algo:change}, auxiliary structures were also created to control the number of dropped and remaining UAVs.
 
-It is useful particularly in AL, which uses a greedy strategy to allocate the tasks. This way, it causes a task reallocation among the remaining UAVs. As the token has the opportunity to pass by the agents more often, the number of exchanged messages increases.
+Each algorithm (AL, SAL or LAL) has a limit to the token's visitings quantity to agent. It is defined to avoid an infinite loop in the token passing and it needs to guarantee a visiting to all agents. Regardless of the algorithm, the token reset permits to pass by the UAVs, at least, one more time than what was established initially. 
 
-Additionally, the $stimulus$ attribute value was updated to adjust the willingness of the agent to perform each task and to analyze its impact on a dynamic context (see line \ref{line:stimulus} in the Algorithm \ref{algo:change}). The initial value used by the original study was $0.6$ as explained in Section \ref{sec:background}, giving a good balance among distance and quality of the sensors at the choose task moment, but different values were tested to measure their impact on the results. The results of these simulations are discussed in Section \ref{sec:discussion}. 
+It is useful particularly in AL, which uses a greedy strategy to allocate the tasks. This way, it causes a task reallocation among the remaining UAVs. As the token has the opportunity to visit the agents more often, the number of exchanged messages increases.
 
-In the original algorithm, all three proposed variants (AL, SAL and LAL) share a common structure formed by some procedures implemented in NetLogo (see Section \ref{sec:background}). The proposed extension was performed in a common part and it is shared by all these variants. Besides what is displayed in Algorithm \ref{algo:change}, auxiliary structures were also created to control the number of dropped and remaining UAVs.
+Furthermore, the $stimulus$ attribute value was updated to adjust the willingness of the agent to perform each task and to analyze its impact on a dynamic context (line \ref{line:stimulus} in the Algorithm \ref{algo:change}). The initial value used by the original study was $0.6$ as explained in Section \ref{sec:background}, giving a good balance among distance and quality of the sensors at the choose task moment, but different values were tested to measure their impact on the results. The results of these simulations are discussed in Section \ref{sec:discussion}. 
