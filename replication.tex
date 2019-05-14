@@ -1,14 +1,14 @@
 The second independent replication was done with the extended algorithms (AL, SAL and LAL) previously presented in Section \ref{sec:changes}. The assessment was done in the same dynamic context used by the first replication (Section \ref{sec:original}), following similar original algorithms conditions and variables values.
 
-Table \ref{table:table06} shows the total reward obtained with the completed tasks, elapsed time to perform the tasks, number of completed tasks, the quality obtained with the completed tasks and the total number of tokens sent with 100 executions and the same \textit{stimulus} and sensors quality used by the original experiments.
+Table \ref{table:table06} shows the total reward obtained with the completed tasks, the elapsed time to perform the tasks, then number of completed tasks, the quality obtained with the completed tasks, and the total number of tokens sent with 100 executions and the same \textit{stimulus} and sensors quality used by the original experiments in all scenarios listed in Section \ref{sec:reproducibility}. 
 
 \input{table06}
 
-The results obtained by these modified algorithms, with small number of UAVs(3) and tasks (4, 8 and 16), presented less difference from the original algorithms in the dynamic scenario (Section \ref{sec:original}). As the number of elements is low, the differences are within the standard deviation. Therefore, the largest group (9 UAVs and 96 tasks) was used to emphasize the variation values. Table \ref{table:table06} shows the results of all scenarios listed in Section \ref{sec:reproducibility}.
+The results obtained by these modified algorithms, with small number of UAVs(3) and tasks (4, 8 and 16), presented less difference from the original algorithms in the dynamic scenario (Section \ref{sec:original}). As the number of elements is low, the differences are within the standard deviation. Therefore, in the following, the largest group (9 UAVs and 96 tasks) was used to explore the differences in the results. 
 
 Overall, the data from Table \ref{table:table06} show that after the modifications described in Section \ref{sec:changes}, resulting in extended algorithms, different results were obtained  compared with the original ones in the dynamic scenario. From all assessed metrics, quality and number of exchanged messages were those with more significant variation.
 
-In particular, the number of messages increases over 100\% with the modified algorithms, indicating a communication overhead. The exchanged messages in the original and the modified algorithms are depicted in Figure \ref{fig:fig06}.
+In particular, the number of messages increases over 100\% with the modified algorithms, indicating a communication overhead. The exchanged messages in the original and the modified algorithms are depicted in Figure \ref{fig:fig06}. This overhead can be explained by the token reset made in the modified algorithms (see Line~\ref{line:step2_begin} in Algorithm \ref{algo:change}). Resetting the token allows it to run more often among the UAVs, generating more messages exchanged among these elements.
 
 \begin{figure}[h!]
 	\begin{center}
@@ -19,7 +19,7 @@ In particular, the number of messages increases over 100\% with the modified alg
 	\end{center}
 \end{figure}
 
-This overhead can be explained by the token reset made in the modified algorithms (see Line \ref{line:step2_begin} in Algorithm \ref{algo:change}). Resetting the token allows it to run more often among the UAVs, generating more messages exchanged among these elements.
+
 
 Figure \ref{fig:fig05} shows that the extended algorithms presented an increase of around 40\% in the quality attribute compared with what was obtained in the first replication (Section \ref{sec:original}). This recovering was due to the task redistribution with the token reset after a context change with a UAV removed from the team. The new token round through the UAVs ensures reallocating tasks to maximize the quality results, relating the task with the agent that has the best sensor to perform it.
 
@@ -80,6 +80,6 @@ The confirmation of the statistical significance of the difference of such value
 \label{fig:fig07}
 \end{figure}
 
-For this replication, the $stimulus$ value applied was of $0.6$. It is the same value applied by the original work and the reproduction done in the beginning of the present study (Section \ref{sec:method}). The justification of its use is presented in \cite{MAS07} and \cite{ferreira2007swarm}.
+For this replication, the $stimulus$ value applied was of $0.6$. It is the same value applied by the original work and the reproduction done in the beginning of the present study (Section \ref{sec:method}). The justification of its use is presented in~\cite{MAS07} and~\cite{ferreira2007swarm}.
 
 As it was done in Section \ref{sec:original}, different values to the \textit{stimulus} attribute were tested. However, when the results obtained with different \textit{stimulus} values were compared, the variation stayed into the standard deviation. To allow a faithful final comparison in this work, the value used by the original work \cite{MAS07} of $0.6$ was also used to this independent variable (Section \ref{sec:discussion}).
