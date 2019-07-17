@@ -20,14 +20,6 @@
 	publisher={The Royal Society}
 }
 
-@book{bonabeau1999swarm,
-	title={Swarm intelligence: from natural to artificial systems},
-	author={Bonabeau, Eric and Dorigo, Marco and Theraulaz, Guy},
-	number={1},
-	year={1999},
-	publisher={Oxford university press}
-}
-
 @inproceedings{tisue2004netlogo,
 	title={Netlogo: A simple environment for modeling complexity},
 	author={Tisue, Seth and Wilensky, Uri},
@@ -728,57 +720,17 @@ easier to replicate than research that does not.
 	Date-Added = {2018-09-10 15:00:29 -0300},
 	Date-Modified = {2018-09-10 15:04:31 -0300},
 	Publisher = {Oxford University Press, Inc.},
+	number={1},
 	Title = {Swarm Intelligence: From Natural to Artificial Systems},
 	Year = {1999}}
 
+
 @article{MAS07,
-	Annote = {=> Formas de avalia{\c c}{\~a}o: mostra diversas formas de avalia{\c c}{\~a}o (Ex.: simula{\c c}{\~a}o)
-
-=> Usamos simula{\c c}{\~o}es devido aos aspectos de custos, tempo, riscos envolvidos (Ex.: permiss{\~a}o para v{\^o}o)
-
-=> Aloca{\c c}{\~a}o de tarefas em times de drones com autonomia de execu{\c c}{\~a}o. As tarefas (miss{\~a}o) s{\~a}o enviadas por um comando central
-
-=> This problem can be handled as a task allocation among agents, in which the UAVs are the agents and the mission is associated with a set of tasks 
-
-=> Swarm GAP n{\~a}o {\'e} aplic{\'a}vel no caso de comando centralizado pois pode conduzir ao uso indevido dos recursos (drones idle)
-
-=> Therefore, the contribution of this paper is the proposal of a new method with three algorithm variants, which aim to: (i) allow the agents use their resources to perform as many tasks as possible; (ii) avoid the agents assigning their resources to tasks that are not very suitable for them; and (iii) allow an efficient workload balance among the agents, that is, to prevent some agents from being overloaded with tasks while others remain idle. 
-
-
-1) SWARM-GAP: O token pode circular e na primeira vez a tarefa n{\~a}o ser alocada, mas na segunda ser. Isso {\'e} dado a capacidade (k) e a Tend{\^e}ncia (T). A escolha da tarefa {\'e} baseada apenas nas informa{\c c}{\~o}es locais. N{\~a}o {\'e} determin{\'\i}stico a escolha das tarefas. (pouca ou nenhuma comunica{\c c}{\~a}o entre drones)
-
-2) AL: Recircula o token de modo a dar chance para tarefas n{\~a}o alocadas serem selecionadas, entretanto limpa a lista de drones visitados mantendo o restante das informa{\c c}{\~o}es (melhoria do SWARM-GAP). O token pode circular indefinidamente com tarefas n{\~a}o alocadas pois n{\~a}o h{\'a} recursos dispon{\'\i}veis no drone.
-
-3) SAL: ordena a lista das tarefas baseado na capacidade de execu{\c c}{\~a}o para evitar que o drone seja alocado em tarefas de baixo desempenho ou import{\^a}ncia. A lista de tarefas {\'e} ordenada pelos UAV com base nas capacidades e tend{\^e}ncias.
-
-4) LAL: Aperfei{\c c}oa o SAL com um limitador de sele{\c c}{\~a}o de tarefas para evitar que um drone selecione muitas tarefas e gere um estado de idle em outro (sem tarefas). Para cada rodada do token, cada drone s{\'o} pode selecionar uma quantidade limitada de tarefas de modo que seja permitido que outro drone tamb{\'e}m possa escolher tarefas (inclusive com capacidade maior que o anterior)
-
-Estrutura da Avalia{\c c}{\~a}o:
-- Experimental setup do artigo est{\'a} dentro do Planejamento da Experimenta{\c c}{\~a}o
-- Cada cen{\'a}rio da tabela 1 corresponde a um contexto. {\'E} poss{\'\i}vel pois utiliza simula{\c c}{\~a}o.
-- O algoritmo {\'e} um fator e ser{\'a} trocado em cada cen{\'a}rio para teste (vari{\'a}vel independente)
-- VARIAVEIS DEPENDENTES: total rewards, makes pan, qualidade das tarefas, quantidade das tarefas conclu{\'\i}das, quantidade de mensagens e tempo de execu{\c c}{\~a}o (Se{\c c}{\~a}o 6 do artigo - parte do planejamento do experimento)
-- Os valores das vari{\'a}veis independentes s{\~a}o escolhidos aleatoriamente
-
-- O design adotado foi: 1 fator com mais de 2 tratamentos (o fator {\'e} o algoritmo e o tratamento feito foi os 4 tipos Swarm, AL, SAL, LAL) - Muda o algoritmo e executa novamente com o mesmo contexto (cen{\'a}rio) [[The scenarios were run 30 times for each proposed algorithm ]]
-Obs.: Poderia ter colocado: ``The experimental design used in this work was{\ldots}''
-
-- Amea{\c c}as: Amea{\c c}a de Conclus{\~a}o. (As afirma{\c c}{\~o}es feitas usando os gr{\'a}ficos podem ser questionadas se considerarmos a faixa de erro - desvio)
-
-- Trabalhos futuros: O time pode mudar.
-
-
-
-
-},
 	Author = {Jana{\'\i}na Schwarzrock and Iulisloi Zacarias and Ana L. C. Bazzan and Edison P. de Freitas and Ricardo Queiroz de Araujo Fernandes and Leonardo Henrique Moreira},
-	Date-Added = {2018-09-10 14:55:37 -0300},
-	Date-Modified = {2018-09-10 15:27:06 -0300},
-	Institution = {Institute of Informatics Federal University of Rio Grande do Sul; Brazilian Army},
-	Journal = {Engineering Applications of Artificial Intelligence},
-	Title = {Solving Task Allocation Problem in Multi Unmanned Aerial Vehicles Systems Using Swarm Intelligence},
-	Year = {2017},
-	Bdsk-File-1 = {YnBsaXN0MDDSAQIDBFxyZWxhdGl2ZVBhdGhZYWxpYXNEYXRhXxAcLi4vTGVpdHVyYXMvU3dhcm1HQVBpbkMyLnBkZk8RAX4AAAAAAX4AAgAAA0hEMgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAANR8ndlIKwAAAAO0sBBTd2FybUdBUGluQzIucGRmAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABUcf17oaQgAAAAAAAAAAAAEAAgAACQAAAAAAAAAAAAAAAAAAAAAITGVpdHVyYXMAEAAIAADUfLn5AAAAEQAIAADXukRyAAAAAQAMAAO0sAADvoYAAACtAAIANkhEMjpEb3V0b3JhZG86AFBST0pFVE9fU1BMOgBMZWl0dXJhczoAU3dhcm1HQVBpbkMyLnBkZgAOACIAEABTAHcAYQByAG0ARwBBAFAAaQBuAEMAMgAuAHAAZABmAA8ACAADAEgARAAyABIAMC9Eb3V0b3JhZG8vUFJPSkVUT19TUEwvTGVpdHVyYXMvU3dhcm1HQVBpbkMyLnBkZgATAAwvVm9sdW1lcy9IRDL//wAAAAgADQAaACQAQwAAAAAAAAIBAAAAAAAAAAUAAAAAAAAAAAAAAAAAAAHF}}
+	institution = {Institute of Informatics Federal University of Rio Grande do Sul; Brazilian Army},
+	journal = {Engineering Applications of Artificial Intelligence},
+	title = {{Solving Task Allocation Problem in Multi Unmanned Aerial Vehicles Systems Using Swarm Intelligence}},
+	year = {2017}}
 
 @book{CC02,
 	Author = {David S Alberts and Richard E Hayes},
@@ -1570,8 +1522,8 @@ C-BELg(M-INTg(phi))
 	Year = {2011},
 	Bdsk-Url-1 = {http://dx.doi.org/10.1007/s10664-010-9135-7}}
 	
-	@techreport{FRANCE2014,
-author = {(FRANCE), NATO SCIENCE A N D TECHNOLOGY ORGANIZATION NEUILLY-SUR-SEINE},
+@techreport{FRANCE2014,
+author = {NATO SCIENCE A N D TECHNOLOGY ORGANIZATION NEUILLY-SUR-SEINE},
 institution = {North Atlantic Treaty Organization},
 keywords = {ADAPTATION,CASE STUDIES,INFORMATION EXCHANGE,MEASURES OF EFFECTIVENESS,MILITARY OPERATIONS,MISSIONS,NATO FORCES,RESILIENCE},
 mendeley-groups = {Pre-Revision},
@@ -1601,7 +1553,6 @@ keywords = {canonical action research, meta-analysis, research frameworks, inter
 doi = {10.1111/j.1365-2575.2004.00162.x},
 url = {https://onlinelibrary.wiley.com/doi/abs/10.1111/j.1365-2575.2004.00162.x},
 eprint = {https://onlinelibrary.wiley.com/doi/pdf/10.1111/j.1365-2575.2004.00162.x},
-abstract = {Abstract.  Despite the growing prominence of canonical action research (CAR) in the information systems discipline, a paucity of methodological guidance continues to hamper those conducting and evaluating such studies. This article elicits a set of five principles and associated criteria to help assure both the rigor and the relevance of CAR in information systems. The first principle relates to the development of an agreement that facilitates collaboration between the action researcher and the client. The second principle is based upon a cyclical process model for action research that consists of five stages: diagnosis, planning, intervention, evaluation and reflection. Additional principles highlight the critical roles of theory, change through action, and the specification of learning in terms of implications for both research and practice. The five principles are illustrated through the analysis of one recently published CAR study.},,
 year = {2004}
 }
 
@@ -1615,3 +1566,54 @@ year = {2004}
 	Title = {Comparison of Multiobjective Evolutionary Algorithms: Empirical Results},
 	Volume = {8},
 	Year = {2000}}
+
+
+@article{UAV10,
+author = {Al-Kaff, Abdulla and Mart{\'{i}}n, David and Garc{\'{i}}a, Fernando and de la Escalera, Arturo and Armingol, Jos{\'{e}} Mar{\'{i}}a},
+doi = {https://doi.org/10.1016/j.eswa.2017.09.033},
+file = {:Users/junieramorim/Downloads/Al-Kaff et al. - 2018 - Survey of computer vision algorithms and applications for unmanned aerial vehicles.pdf:pdf},
+issn = {0957-4174},
+journal = {Expert Systems with Applications},
+keywords = {Computer vision,Navigation system,Obstacle avoidance,Pose estimation,UAV,Vision-Based applications,Visual servoing},
+mendeley-groups = {UAV},
+pages = {447--463},
+title = {{Survey of computer vision algorithms and applications for unmanned aerial vehicles}},
+url = {http://www.sciencedirect.com/science/article/pii/S0957417417306395},
+volume = {92},
+year = {2018}
+}
+
+
+
+@article{UAV11,
+author = {Sun, Tsung-Ying and Huo, Chih-Li and Tsai, Shang-Jeng and Yu, Yu-Hsiang and Liu, Chan-Cheng},
+doi = {https://doi.org/10.1016/j.eswa.2011.02.013},
+issn = {0957-4174},
+journal = {Expert Systems with Applications},
+keywords = {Aerial imagery map,B-spline curve,Flight routes,Particle swarm optimizer (PSO),Skeletonization,Unmanned aerial vehicles (UAV)},
+mendeley-groups = {UAV},
+number = {8},
+pages = {10036--10048},
+title = {{Intelligent flight task algorithm for unmanned aerial vehicle}},
+url = {http://www.sciencedirect.com/science/article/pii/S0957417411002193},
+volume = {38},
+year = {2011}
+}
+
+
+
+@article{UAV12,
+author = {Hilaire, Vincent and Cossentino, Massimo and Gechter, Franck and Rodriguez, Sebastian and Koukam, Abderaffiaa},
+doi = {https://doi.org/10.1016/j.eswa.2012.08.058},
+file = {:Users/junieramorim/Library/Application Support/Mendeley Desktop/Downloaded/Hilaire et al. - 2013 - An approach for the integration of swarm intelligence in MAS An engineering perspective.pdf:pdf},
+issn = {0957-4174},
+journal = {Expert Systems with Applications},
+keywords = {Agent-oriented software engineering,Agents,Swarming systems},
+mendeley-groups = {UAV},
+number = {4},
+pages = {1323--1332},
+title = {{An approach for the integration of swarm intelligence in MAS: An engineering perspective}},
+url = {http://www.sciencedirect.com/science/article/pii/S0957417412010196},
+volume = {40},
+year = {2013}
+}

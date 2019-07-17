@@ -1,9 +1,9 @@
 %% Explain the scenario created; how and when the agents are dropped;
 
-The original work presented by \textit{Schwarzrock et al.}~\cite{MAS07} was based on a static context. In that scenario, important elements such as the tasks that compose the mission, or the number and the type of agents, are defined in the beginning and do not change during the mission execution.
+The original work presented by \textit{Schwarzrock et al.}~\citep{MAS07} was based on a static context. In that scenario, important elements such as the tasks that compose the mission, or the number and the type of agents, are defined in the beginning and do not change during the mission execution.
 
 However, as already mentioned, considering a military operation environment, this assumption is not realistic, limiting the usefulness of the solution in the real world. To explore a more realistic context, dynamism in the scenario must be considered. This work targets this aspect by considering a varying number of agents during the execution of the algorithms, randomly taking down of some agents. 
-The agents removal follows a time slice $\mu$ defined by Eq. \ref{eq:uavs}, i.e., one UAV will be taken down in each interval defined by the total mission time (measured in ticks) divided by the initial number of agents in the team. This proceeds until a single UAV remains in the team, as shown by Algorithm \ref{algo:down}. This algorithm is implemented into the main loop of each original code variant proposed by~\cite{MAS07}, where the token exchange among agents occurs, as well as the task allocation, and it is executed in each pass of the main method.
+The agents removal follows a time slice $\mu$ defined by Eq. \ref{eq:uavs}, i.e., one UAV will be taken down in each interval defined by the total mission time (measured in ticks) divided by the initial number of agents in the team. This proceeds until a single UAV remains in the team, as shown by Algorithm \ref{algo:down}. This algorithm is implemented into the main loop of each original code variant proposed by~\citep{MAS07}, where the token exchange among agents occurs, as well as the task allocation, and it is executed in each pass of the main method.
 
 \begin{equation} \label{eq:uavs}
 	\mu = \frac{total\_time}{total\_agents}
@@ -11,7 +11,7 @@ The agents removal follows a time slice $\mu$ defined by Eq. \ref{eq:uavs}, i.e.
 
 % Obs Prof Vander - verificar se nao é o caso de deixar o algoritmo com um formalismo mais matematico 
 \begin{algorithm}[!ht]
-	\caption{Pseudocode for taking down an UAV(agent) that is inserted after line \ref{line:AL_ini} of Alghorithm \ref{algo:swarm-gap} and used by the three variants proposed by the original study \cite{MAS07}}
+	\caption{Pseudocode for taking down an UAV(agent) that is inserted after line \ref{line:AL_ini} of Alghorithm \ref{algo:swarm-gap} and used by the three variants proposed by the original study \citep{MAS07}}
 	\label{algo:down}
 	
 	\SetAlgoLined

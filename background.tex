@@ -1,4 +1,4 @@
-The task allocation problem solution proposed by \textit{Schwarzrock et al.} in~\cite{MAS07} was modeled as a generalized assignment problem (GAP)\cite{ferreira2007swarm}. The goal of that proposal is to maximize the total capability of the agents using a probabilistic approach \cite{theraulaz1998response}. Their solution relies on the combination of GAP and swarm intelligence~\cite{MOEA07}, called swarm-GAP, using a token-based communication protocol. The proposal presented by \textit{Schwarzrock et al.}~\cite{MAS07} results in three variants based on swarm-GAP:
+The task allocation problem solution proposed by \textit{Schwarzrock et al.} in ~\citep{MAS07} was modeled as a generalized assignment problem (GAP)\citep{ferreira2007swarm}. The goal of that proposal is to maximize the total capability of the agents using a probabilistic approach \citep{theraulaz1998response}. Their solution relies on the combination of GAP and swarm intelligence~\citep{MOEA07}, called swarm-GAP, using a token-based communication protocol. The proposal presented by \textit{Schwarzrock et al.}~\citep{MAS07} results in three variants based on swarm-GAP:
 
 \begin{itemize}
    \item \textit{Allocation Loop (AL)}: a control list of visited agents is used and the token runs while there is available tasks. To avoid an infinite loop, the agent registers if it has any resource available to perform a new task before resending the token. Only an agent with free resources will receive the token;
@@ -6,7 +6,7 @@ The task allocation problem solution proposed by \textit{Schwarzrock et al.} in~
    \item \textit{Limit and Allocation Loop (LAL)}: extends SAL algorithm and defines a task selection limit per UAV in each round to prevent a greedy strategy and idle agents.
 \end{itemize}
 
-To represent the agent that will to perform a task, the proposed algorithms define an attribute called $stimulus (st)$. This variable balances the weight among the distance to the task and sensor quality to perform it. \textit{Ferreira et al.}~\cite{ferreira2007swarm} provided evidence that the most suitable value to this variable, in most situations, is $0.6$. Equation \ref{eq:tendencia} shows the calculation of task execution tendency using the $stimulus$ value and the threshold $\theta$. Higher $stimulus$ indicates that less specialized agents will perform the tasks, whereas lower $stimulus$ indicates the task will be done by a more specialized agent.~\cite{bonabeau1999swarm}. 
+To represent the agent that will to perform a task, the proposed algorithms define an attribute called $stimulus (st)$. This variable balances the weight among the distance to the task and sensor quality to perform it. \textit{Ferreira et al.}~\citep{ferreira2007swarm} provided evidence that the most suitable value to this variable, in most situations, is $0.6$. Equation \ref{eq:tendencia} shows the calculation of task execution tendency using the $stimulus$ value and the threshold $\theta$. Higher $stimulus$ indicates that less specialized agents will perform the tasks, whereas lower $stimulus$ indicates the task will be done by a more specialized agent.~\citep{MOEA07}. 
 
 The agent threshold $\theta$ is defined by the Equation \ref{eq:limiar} and depends on the agent's capability $k_{ij}$ to perform a task. The capability of an agent $i$ to perform each task $j$ belonging to a set $J$ of available tasks, is defined by Equation \ref{eq:capability}. The capability calculus uses the Euclidean distance $d(i,j)$ between the UAV and the task, the UAV's quality $Q(i,j)$ to perform the task and the weight $\alpha \in [0,1]$ given to the distance and quality factors. 
 
@@ -30,7 +30,7 @@ k_{ij} = & \frac{\max_{g \in J} \{d(i,g)\} - d(i,j)}{\max_{g \in J} \{d(i,g)\}} 
 Algorithms \ref{algo:swarm-gap} and \ref{algo:swarm-gap2} show the pseudo code for AL and SAL, respectively. Once an agent receives a token (line \ref{line:recebe}) with a list of available tasks, it calculates the tendency (line \ref{line:compute_t}). To decide on task allocation, the agent analyzes its tendency and compares its available resources with the estimated cost to execute the task ($c_j$) (line \ref{line:ini_ifalgo1}). When the agent decides to get a task, this task is allocated (line~\ref{line:aloca_sgap}) and the agent’s resources are reduced accordingly (line \ref{line:fim_ifalgo1}). Lines \ref{line:AL_ini} to \ref{line:ALfim} of  Algorithm \ref{algo:swarm-gap} are common to all three algorithms, and mark the agent as visited and send the token to the next not visited agent. The LAL algorithm was not listed due to its similarity with SAL, differing from the latter by  an upper bound to the number of tasks selected by each agent per token pass. 
 
 \begin{algorithm}[h!t]
-	\caption{Pseudo code - Allocation loop (AL) (from Schwarzrock et al.\cite{MAS07})}
+	\caption{Pseudo code - Allocation loop (AL) (from Schwarzrock et al.\citep{MAS07})}
 	\label{algo:swarm-gap}
 	
 	\SetAlgoLined
@@ -65,7 +65,7 @@ Algorithms \ref{algo:swarm-gap} and \ref{algo:swarm-gap2} show the pseudo code f
 
 
 \begin{algorithm}[h!t]
-	\caption{Pseudo code - SAL (from Schwarzrock et al.\cite{MAS07})}
+	\caption{Pseudo code - SAL (from Schwarzrock et al.\citep{MAS07})}
 	\label{algo:swarm-gap2}
 	
 	\SetAlgoLined
@@ -97,4 +97,4 @@ Algorithms \ref{algo:swarm-gap} and \ref{algo:swarm-gap2} show the pseudo code f
 	
 \end{algorithm}
 
-In the scenario adopted by \textit{Schwarzrock et al.}~\cite{MAS07}, each UAV can perform more than one task, but each task can be performed only by one agent. The mission transmission, by a Central Command, is done using a token-based protocol that transmits all information about the tasks and agents association. With this protocol, when a specific UAV chooses a task and allocates it to itself, it sends this information to the next agent of the team. Thus, the next agent will know which tasks are available for execution. Additionally, \textit{tick} is the unit used to measure the execution time of these algorithms.
+In the scenario adopted by \textit{Schwarzrock et al.}~\citep{MAS07}, each UAV can perform more than one task, but each task can be performed only by one agent. The mission transmission, by a Central Command, is done using a token-based protocol that transmits all information about the tasks and agents association. With this protocol, when a specific UAV chooses a task and allocates it to itself, it sends this information to the next agent of the team. Thus, the next agent will know which tasks are available for execution. Additionally, \textit{tick} is the unit used to measure the execution time of these algorithms.
